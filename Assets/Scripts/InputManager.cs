@@ -16,6 +16,6 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        Movement = _moveAction.ReadValue<Vector2>();
+        // Movement = _moveAction.ReadValue<Vector2>();
     }
 }
