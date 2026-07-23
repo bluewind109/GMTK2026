@@ -1,0 +1,27 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>390</x><y>370</y><w>150</w><h>130</h></coordinates><panel_attributes>/AbstractClass/
+*Attack*
+--
+-int damage
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>610</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+*StandingAttack*
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>490</y><w>270</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>610</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+*DashAttack*
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>610</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+*SwipeAttack*
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>610</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+*DrillAttack*
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>490</y><w>120</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>490</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;120</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>490</y><w>260</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;240;120</additional_attributes></element></diagram>
