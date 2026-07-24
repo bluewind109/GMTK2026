@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>420</x><y>330</y><w>210</w><h>250</h></coordinates><panel_attributes>/Class/
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>320</x><y>360</y><w>270</w><h>350</h></coordinates><panel_attributes>/Class/
 *Enemy*
 --
 -Vector3 startPosition
@@ -11,5 +11,22 @@
 +int GetDamage()
 +float GetAttackRange()
 
++void Init(Vector3 _startPosition)
++void ResetPosition()
+
 +void Move()
-+void Attack()</panel_attributes><additional_attributes></additional_attributes></element></diagram>
++void Attack()
+
+-void Activate()
+-void Deactivate()
++bool IsActive()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>360</y><w>210</w><h>170</h></coordinates><panel_attributes>/Class/
+*EnemyManager*
+--
+-Transform[] spawnLocations
+-Enemy enemyPrefab
+-const int ENEMY_CAP
+-Enemy[] enemyPool
+--
+-voidSpawn()
+-Enemy GetAvailableSpawn()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>430</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element></diagram>
