@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class SpawnLocation : MonoBehaviour
 {
-    [SerializeField] private SpawnAreaConfig spawnAreaConfig;
+    [SerializeField] private LevelConfig levelConfig;
     private SpriteRenderer spriteRenderer;
     private LevelInfo currentLevelInfo;
 
@@ -19,6 +19,6 @@ public class SpawnLocation : MonoBehaviour
 
     public void SetLevelInfo(int levelIndex)
     {
-        currentLevelInfo = spawnAreaConfig.GetLevelInfo(levelIndex);
+        currentLevelInfo = levelConfig.GetLevelInfo(levelIndex);
     }
 }

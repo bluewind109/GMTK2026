@@ -10,15 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea4e799fa3f5e934aa87da7cc33f4229, type: 3}
-  m_Name: SpawnAreaConfig-Left
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnAreaConfig
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: Assembly-CSharp::LevelConfig
   levelInfos:
-  - spawnAmount: 7
-    spawnInterval: 0.5
-    turnDuration: 15
-    numberOfTurns: 3
-    spawnWeights:
-    - enemyType: 0
-      weight: 10
-    - enemyType: 1
-      weight: 10
+  - {fileID: 11400000, guid: 7004bd9c8d7dc3f40a021dbf04b3be06, type: 2}

@@ -764,6 +764,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2634847527615195515, guid: 2e4f23b54b3d5e143a624a9a8f7538c3, type: 3}
+      propertyPath: spawnAreaConfig
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7364526577464187106, guid: 2e4f23b54b3d5e143a624a9a8f7538c3, type: 3}
       propertyPath: m_Name
       value: Spawn-Right
@@ -1187,6 +1191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawn-Left
       objectReference: {fileID: 0}
+    - target: {fileID: 6500984634985419365, guid: b6dbd60719b57b941969310aa489872b, type: 3}
+      propertyPath: spawnAreaConfig
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8449276937073790709, guid: b6dbd60719b57b941969310aa489872b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -1344,6 +1352,10 @@ PrefabInstance:
     - target: {fileID: 6186377817859897163, guid: 7a6d7744c077a784fafc5510856630ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8837067793747553243, guid: 7a6d7744c077a784fafc5510856630ed, type: 3}
+      propertyPath: spawnAreaConfig
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

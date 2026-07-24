@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-[CreateAssetMenu(fileName = "SpawnAreaConfig", menuName = "Configs/SpawnAreaConfig")]
-public class SpawnAreaConfig : ScriptableObject
+[CreateAssetMenu(fileName = "LevelConfig", menuName = "Configs/Level/LevelConfig")]
+public class LevelConfig : ScriptableObject
 {
     [SerializeField] private List<LevelInfo> levelInfos;
 
@@ -19,13 +19,9 @@ public class SpawnAreaConfig : ScriptableObject
 }
 
 [Serializable]
-public class LevelInfo
+public class SpawnAreaInfo
 {
-    public int spawnAmount;
-    public float spawnInterval = 0.5f;
-    public float turnDuration = 15f;
-    public int numberOfTurns = 3;
-
+    public int spawnAmount = 7;
     public List<SpawnWeight> spawnWeights;
 
     private float GetTotalWeight()
@@ -61,7 +57,7 @@ public class LevelInfo
 public class SpawnWeight
 {
     public EnemyType enemyType;
-    public float weight;
+    public float weight = 10f;
 }
 
 public enum EnemyType
