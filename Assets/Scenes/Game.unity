@@ -1313,6 +1313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawn-Center
       objectReference: {fileID: 0}
+    - target: {fileID: 4887314776227427570, guid: 7a6d7744c077a784fafc5510856630ed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6186377817859897163, guid: 7a6d7744c077a784fafc5510856630ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

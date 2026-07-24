@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   enemyConfig: {fileID: 11400000, guid: c58f387b667e0f7488f563c044814251, type: 2}
+  levelConfig: {fileID: 11400000, guid: b5356f8ce970dde4db0736c4dd69c301, type: 2}
   spawnLocationsParent: {fileID: 0}
   enemiesContainer: {fileID: 0}
   enemyPrefab: {fileID: 8466731114420809166, guid: b7f5419e1a75d71419a910ae3056ceb3, type: 3}
+  spawnLocations: []
+  targetPosition: {fileID: 0}

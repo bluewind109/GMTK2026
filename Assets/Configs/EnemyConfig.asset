@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e7bf73c666a9548ba0aca060eb177d, type: 3}
   m_Name: EnemyConfig
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
-  health: 3
-  moveSpeed: 2
-  damage: 1
-  attackRange: 1
+  enemyInfos:
+  - enemyType: 0
+    health: 3
+    moveSpeed: 2
+    damage: 1

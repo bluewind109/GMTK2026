@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>11</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>198</x><y>0</y><w>242</w><h>297</h></coordinates><panel_attributes>/Class/
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>190</x><y>430</y><w>220</w><h>270</h></coordinates><panel_attributes>/Class/
 *Enemy*
 --
 -Vector3 startPosition
@@ -15,10 +15,11 @@
 
 -void Activate()
 -void Deactivate()
-+bool IsActive()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>583</x><y>0</y><w>231</w><h>187</h></coordinates><panel_attributes>/Class/
++bool IsActive()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>430</y><w>210</w><h>170</h></coordinates><panel_attributes>/Class/
 *EnemyManager*
 --
 -EnemyConfig enemyConfig
+-LevelConfig levelConfig
 -Transform[] spawnLocations
 -Enemy[] enemiesContainer
 -Enemy enemyPrefab
@@ -27,27 +28,19 @@
 --
 -voidSpawn()
 -Enemy GetAvailableSpawn()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>429</x><y>77</y><w>176</w><h>33</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>583</x><y>242</y><w>231</w><h>231</h></coordinates><panel_attributes>/ScriptableObject/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>500</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>740</y><w>210</w><h>110</h></coordinates><panel_attributes>/ScriptableObject/
 *EnemyConfig*
 --
--int health
--float moveSpeed
--int damage
-
--float attackRange
+-EnemyInfo[] enemyInfos
 --
-+Vector3 GetStartPosition()
-+int GetHealth()
-+float GetMoveSpeed()
-+int GetDamage()
-+float GetAttackRange()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>682</x><y>176</y><w>33</w><h>88</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>33</x><y>968</y><w>264</w><h>143</h></coordinates><panel_attributes>/Class/
++EnemyInfo GetEnemyByType()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>590</y><w>30</w><h>170</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>210</y><w>240</w><h>130</h></coordinates><panel_attributes>/Class/
 *SpawnAreaInfo*
 --
 +int spawnAmount
 +EnemySpawnWeight[] spawnWeights
 --
 -float GetTotalWeight()
-+EnemyType GetRandomEnemyType()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>44</x><y>737</y><w>198</w><h>176</h></coordinates><panel_attributes>/Class/
++EnemyType GetRandomEnemyType()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>0</y><w>180</w><h>160</h></coordinates><panel_attributes>/Class/
 *LevelInfo*
 --
 +float spawnInterval = 0.5
@@ -57,15 +50,23 @@
 +SpawnAreaInfo leftSpawn
 +SpawnAreaInfo centerSpawn
 +SpawnAreaInfo rightSpawn
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>132</x><y>902</y><w>33</w><h>88</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>1001</y><w>198</w><h>88</h></coordinates><panel_attributes>/Class/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>150</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>240</y><w>180</w><h>80</h></coordinates><panel_attributes>/Class/
 *EnemySpawnWeight*
 --
 +EnemyType enemyType
 +float weight
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>286</x><y>1034</y><w>66</w><h>33</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>737</y><w>198</w><h>176</h></coordinates><panel_attributes>/Class/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>270</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>0</y><w>180</w><h>160</h></coordinates><panel_attributes>/Class/
 *LevelConfig*
 --
 -LevelInfo[] levelInfos
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>231</x><y>825</y><w>121</w><h>33</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>80</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>70</y><w>190</w><h>470</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;170;10;170;450;10;450</additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>740</y><w>150</w><h>120</h></coordinates><panel_attributes>/Class/
+*EnemyInfo*
+--
++EnemyType type
++int health
++float moveSpeed
++int damage
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>790</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element></diagram>

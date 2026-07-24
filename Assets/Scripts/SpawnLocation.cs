@@ -1,11 +1,15 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System;
 
 public class SpawnLocation : MonoBehaviour
 {
-    [SerializeField] private LevelConfig levelConfig;
+    public Action<Vector3> onIntervalReached;
+
+    [SerializeField] private float spawnRadius = 0.5f;
+
     private SpriteRenderer spriteRenderer;
-    private LevelInfo currentLevelInfo;
+    private float spawnInterval = 0.5f;
+    private float spawnTimer = 0f;
 
     private void Awake()
     {
@@ -17,8 +21,21 @@ public class SpawnLocation : MonoBehaviour
         spriteRenderer.enabled = false;
     }
 
-    public void SetLevelInfo(int levelIndex)
+    public void UpdateSpawnInterval()
     {
-        currentLevelInfo = levelConfig.GetLevelInfo(levelIndex);
+        if (spawnTimer <= 0f) return;
+
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0f)
+        {
+            spawnTimer = spawnInterval;
+            SetupSpawn();
+        }
+    }
+
+    private void SetupSpawn()
+    {
+        Vector3 spawnPosition = transform.position + (Vector3)(UnityEngine.Random.insideUnitCircle * spawnRadius);
+        onIntervalReached?.Invoke(spawnPosition);
     }
 }
