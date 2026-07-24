@@ -11,16 +11,20 @@ public class GameManager : MonoBehaviour
 	void Start()
 	{
 		// currentPhase = GamePhase.Start;
+		turnController.Init();
+		turnController.StartEnemyTurn();
 		enemyManager.Test_StartLevel1();
+		currentPhase = GamePhase.Gameplay;
 	}
 
 	void Update()
 	{
-		// if (currentPhase == GamePhase.Gameplay)
-		// {
-		enemyManager.UpdateSpawnLocations();
-		enemyManager.UpdateEnemyMovements();
-		// }
+		if (currentPhase == GamePhase.Gameplay)
+		{
+			float speedMultiplier = turnController.IsPlayerTurn ? 0.2f : 1f;
+			enemyManager.UpdateSpawnLocations();
+			enemyManager.UpdateEnemyMovements(speedMultiplier);
+		}
 	}
 }
 

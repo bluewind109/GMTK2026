@@ -31,10 +31,10 @@ public class Enemy : MonoBehaviour
         // gameObject.SetActive(false);
     }
 
-    public void MoveTowardsTarget()
+    public void MoveTowardsTarget(float speedMultiplier)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        transform.position += direction * moveSpeed * speedMultiplier * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 

@@ -10,9 +10,12 @@ public class TurnController : MonoBehaviour
     private Turn playerTurn;
     private Turn currentTurn;
 
+    public bool IsPlayerTurn => currentTurn == playerTurn;
+    public bool IsEnemyTurn => currentTurn == enemyTurn;
+
     private float duration = 1f;
 
-    void Start()
+    public void Init()
     {
         duration = config.GetDuration();
         playerDuration = config.GetPlayerDuration();
@@ -21,8 +24,6 @@ public class TurnController : MonoBehaviour
 
         playerTurn.onTurnEnd += OnPlayerTurnEnd;
         enemyTurn.onTurnEnd += OnEnemyTurnEnd;
-
-        StartEnemyTurn();
     }
 
     void OnDestroy()

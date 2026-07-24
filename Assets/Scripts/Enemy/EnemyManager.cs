@@ -70,13 +70,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void UpdateEnemyMovements()
+    public void UpdateEnemyMovements(float speedMultiplier)
     {
         foreach (var enemy in activeEnemies)
         {
             if (enemy.IsActive())
             {
-                enemy.MoveTowardsTarget();
+                enemy.MoveTowardsTarget(speedMultiplier);
             }
         }
     }
