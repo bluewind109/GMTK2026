@@ -27,6 +27,34 @@ public class LevelInfo
     public int numberOfTurns = 3;
 
     public List<SpawnWeight> spawnWeights;
+
+    private float GetTotalWeight()
+    {
+        float totalWeight = 0f;
+        foreach (var spawnWeight in spawnWeights)
+        {
+            totalWeight += spawnWeight.weight;
+        }
+        return totalWeight;
+    }
+
+    public EnemyType GetRandomEnemyType()
+    {
+        float totalWeight = GetTotalWeight();
+        float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+        float cumulativeWeight = 0f;
+
+        foreach (var spawnWeight in spawnWeights)
+        {
+            cumulativeWeight += spawnWeight.weight;
+            if (randomValue <= cumulativeWeight)
+            {
+                return spawnWeight.enemyType;
+            }
+        }
+
+        return spawnWeights[spawnWeights.Count - 1].enemyType;
+    }
 }
 
 [Serializable]

@@ -43,15 +43,18 @@
 +float GetAttackRange()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>737</x><y>176</y><w>33</w><h>88</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>121</x><y>638</y><w>220</w><h>77</h></coordinates><panel_attributes>/ScriptableObject/
 *SpawnAreaSO*
 --
--LevelInfo[] levelInfos</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>77</x><y>759</y><w>253</w><h>176</h></coordinates><panel_attributes>/Class/
+-LevelInfo[] levelInfos</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>77</x><y>759</y><w>253</w><h>209</h></coordinates><panel_attributes>/Class/
 *LevelInfo*
 --
 +int spawnAmount
 +float spawnInterval
 +float turnDuration
-+intnumberOfTurns
++int numberOfTurns
 
-+EnemySpawnWeight[] spawnWeights</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>704</y><w>33</w><h>77</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>374</x><y>792</y><w>198</w><h>88</h></coordinates><panel_attributes>/Class/
++EnemySpawnWeight[] spawnWeights
+--
+-float GetTotalWeight()
++EnemyType GetRandomEnemyType()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>704</y><w>33</w><h>77</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>374</x><y>792</y><w>198</w><h>88</h></coordinates><panel_attributes>/Class/
 *EnemySpawnWeight*
 --
 +EnemyType enemyType
