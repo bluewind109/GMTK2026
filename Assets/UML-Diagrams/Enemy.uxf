@@ -1,16 +1,12 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>320</x><y>360</y><w>270</w><h>350</h></coordinates><panel_attributes>/Class/
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>315</x><y>225</y><w>198</w><h>243</h></coordinates><panel_attributes>/Class/
 *Enemy*
 --
 -Vector3 startPosition
+-float health
 -float moveSpeed
 -int damage
 -float attackRange
 --
-+Vector3 GetStartPosition()
-+float GetMoveSpeed()
-+int GetDamage()
-+float GetAttackRange()
-
 +void Init(Vector3 _startPosition)
 +void ResetPosition()
 
@@ -19,14 +15,28 @@
 
 -void Activate()
 -void Deactivate()
-+bool IsActive()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>360</y><w>210</w><h>170</h></coordinates><panel_attributes>/Class/
++bool IsActive()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>225</y><w>189</w><h>153</h></coordinates><panel_attributes>/Class/
 *EnemyManager*
 --
+-EnemyConfig enemyConfig
 -Transform[] spawnLocations
+-Enemy[] enemiesContainer
 -Enemy enemyPrefab
--const int ENEMY_CAP
+-const int MAX_ENEMIES
 -Enemy[] enemyPool
 --
 -voidSpawn()
 -Enemy GetAvailableSpawn()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>430</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>288</y><w>144</w><h>27</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>423</y><w>189</w><h>189</h></coordinates><panel_attributes>/ScriptableObject/
+*EnemyConfig*
+--
+-int health
+-float moveSpeed
+-int damage
+-float attackRange
+--
++Vector3 GetStartPosition()
++int GetHealth()
++float GetMoveSpeed()
++int GetDamage()
++float GetAttackRange()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>711</x><y>369</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element></diagram>
