@@ -3,14 +3,14 @@ using UnityEngine;
 public class TurnController : MonoBehaviour
 {
     [SerializeField] private TurnSO config;
+    [SerializeField] private float playerDuration = 5f;
     [SerializeField] private TurnTimerUI timerUI;
 
     private Turn enemyTurn;
     private Turn playerTurn;
     private Turn currentTurn;
 
-    float duration = 1f;
-    float playerDuration = 1f;
+    private float duration = 1f;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class TurnController : MonoBehaviour
         playerTurn.onTurnEnd += OnPlayerTurnEnd;
         enemyTurn.onTurnEnd += OnEnemyTurnEnd;
 
-        StartPlayerTurn();
+        StartEnemyTurn();
     }
 
     void OnDestroy()

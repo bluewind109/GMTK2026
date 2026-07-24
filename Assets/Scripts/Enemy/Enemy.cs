@@ -1,17 +1,28 @@
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
+    public Action<Enemy> onDeath;
+
     private Vector3 initialPosition;
+    private Vector3 targetPosition;
+
+    private int health = 1;
     private float moveSpeed = 2f;
     private int damage = 1;
-    private float attackRange = 1f;
 
-    public void Initialize(float speed, int damageAmount, float range)
+    public void Initialize(
+        EnemyInfo info, 
+        Vector3 initialPosition, 
+        Vector3 targetPosition)
     {
-        moveSpeed = speed;
-        damage = damageAmount;
-        attackRange = range;
+        this.initialPosition = initialPosition;
+        this.targetPosition = targetPosition;
+        health = info.health;
+        moveSpeed = info.moveSpeed;
+        damage = info.damage;
+        transform.position = initialPosition;
     }
 
     public void Reset()
@@ -20,7 +31,7 @@ public class Enemy : MonoBehaviour
         // gameObject.SetActive(false);
     }
 
-    public void MoveTowards(Vector3 targetPosition)
+    public void MoveTowardsTarget()
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
         transform.position += direction * moveSpeed * Time.deltaTime;
@@ -40,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     public void Deactivate()
     {
-        // TODO
+        onDeath?.Invoke(this);
     }
 
     public bool IsActive() => gameObject.activeSelf;

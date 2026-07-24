@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30486d1df5a07ed418aa8241e99b1cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnLocation
+  spawnRadius: 5
 --- !u!212 &2448305357966011962
 SpriteRenderer:
   serializedVersion: 2

@@ -10,6 +10,7 @@ public class SpawnLocation : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float spawnInterval = 0.5f;
     private float spawnTimer = 0f;
+    private int spawnAmount = 7;
 
     private void Awake()
     {
@@ -18,7 +19,14 @@ public class SpawnLocation : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer.enabled = false;
+        // spriteRenderer.enabled = false;
+    }
+
+    public void Initialize(float interval, int amount)
+    {
+        spawnInterval = interval;
+        spawnAmount = amount;
+        spawnTimer = spawnInterval;
     }
 
     public void UpdateSpawnInterval()
@@ -35,7 +43,11 @@ public class SpawnLocation : MonoBehaviour
 
     private void SetupSpawn()
     {
-        Vector3 spawnPosition = transform.position + (Vector3)(UnityEngine.Random.insideUnitCircle * spawnRadius);
+        Vector3 spawnPosition = 
+            transform.position + 
+            (Vector3)(UnityEngine.Random.insideUnitCircle.normalized * spawnRadius);
+        if (spawnAmount <= 0) return;
+        spawnAmount--;
         onIntervalReached?.Invoke(spawnPosition);
     }
 }
