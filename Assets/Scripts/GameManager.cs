@@ -21,9 +21,11 @@ public class GameManager : MonoBehaviour
 	{
 		if (currentPhase == GamePhase.Gameplay)
 		{
-			float speedMultiplier = turnController.IsPlayerTurn ? 0.2f : 1f;
+			float speedMultiplier = turnController.IsPlayerTurn ? 0.1f : 1f;
 			enemyManager.UpdateSpawnLocations();
 			enemyManager.UpdateEnemyMovements(speedMultiplier);
+
+			turnController.UpdateTurn();
 		}
 	}
 }

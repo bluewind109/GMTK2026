@@ -4,7 +4,6 @@ using UnityEngine;
 public class LevelInfo : ScriptableObject
 {
     public float spawnInterval = 0.5f;
-    public float turnDuration = 15f;
     public int numberOfTurns = 3;
 
     public SpawnAreaInfo leftSpawn;

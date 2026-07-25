@@ -1150,6 +1150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurnTimerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5455322573327637638, guid: 649d412c46467f64e923660902e20707, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

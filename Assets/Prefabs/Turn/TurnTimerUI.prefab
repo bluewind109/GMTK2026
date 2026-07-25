@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnTimerUI
   bar: {fileID: 2862873460624758933}
-  turnFill: {fileID: 5455322573327637638}
+  enemyTurnFill: {fileID: 5455322573327637638}
   playerTurnFill: {fileID: 8447848966470002472}
 --- !u!225 &527880441561760827
 CanvasGroup:
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 6093123391332368050}
   - component: {fileID: 5455322573327637638}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: EnemyFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

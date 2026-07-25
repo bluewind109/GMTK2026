@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TurnSO
   m_EditorClassIdentifier: Assembly-CSharp::TurnSO
   duration: 5
-  playerDuration: 5
+  playerDuration: 10
