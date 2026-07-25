@@ -10,7 +10,6 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Enemy")]
     [SerializeField] private Transform enemiesContainer;
-    [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private Transform targetPosition;
     private List<Enemy> activeEnemies = new List<Enemy>();
 
@@ -47,16 +46,20 @@ public class EnemyManager : MonoBehaviour
     public void Test_StartLevel1()
     {
         LevelInfo levelInfo = levelConfig.GetLevelInfo(0);
-        spawnLocation_Left.Initialize(levelInfo.spawnInterval, levelInfo.leftSpawn.spawnAmount);
-        spawnLocation_Right.Initialize(levelInfo.spawnInterval, levelInfo.rightSpawn.spawnAmount);
-        spawnLocation_Center.Initialize(levelInfo.spawnInterval, levelInfo.centerSpawn.spawnAmount);
+        spawnLocation_Left.Initialize(levelInfo.leftSpawn, levelInfo.spawnInterval);
+        spawnLocation_Right.Initialize(levelInfo.rightSpawn, levelInfo.spawnInterval);
+        spawnLocation_Center.Initialize(levelInfo.centerSpawn, levelInfo.spawnInterval);
     }
 
-    private void SpawnEnemy(Vector3 spawnPosition)
+    private void SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition)
     {
-        Enemy instance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, enemiesContainer);
-        EnemyType enemyType = EnemyType.TypeA;
         EnemyInfo enemyInfo = enemyConfig.GetEnemyInfo(enemyType);
+        Enemy instance = Instantiate(
+            enemyInfo.enemyPrefab, 
+            spawnPosition, 
+            Quaternion.identity,
+            enemiesContainer
+        );
         instance.Initialize(enemyInfo, spawnPosition, targetPosition.position);
         instance.onDeath += OnEnemyDeath;
         activeEnemies.Add(instance);

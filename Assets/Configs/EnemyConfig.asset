@@ -17,11 +17,9 @@ MonoBehaviour:
     health: 3
     moveSpeed: 2
     damage: 1
-    sprite: {fileID: 8991563339926328841, guid: f61970b0ce10b614a8e49301c6872e98, type: 3}
-    animator: {fileID: 0}
+    enemyPrefab: {fileID: 7773470685073123821, guid: 3618a7c1e81ee724f9bb0ebe8e458fd3, type: 3}
   - enemyType: 1
-    health: 3
-    moveSpeed: 2
-    damage: 1
-    sprite: {fileID: 1437026341, guid: 36fc2a32c0d29464fa83dfe353f844e0, type: 3}
-    animator: {fileID: 0}
+    health: 6
+    moveSpeed: 1
+    damage: 2
+    enemyPrefab: {fileID: 6355538612565664745, guid: d5b58b258df862a4e903324bfda8f6b7, type: 3}

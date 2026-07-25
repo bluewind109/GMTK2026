@@ -3,7 +3,7 @@ using System;
 
 public class SpawnLocation : MonoBehaviour
 {
-    public Action<Vector3> onIntervalReached;
+    public Action<EnemyType, Vector3> onIntervalReached;
 
     [SerializeField] private float spawnRadius = 0.5f;
 
@@ -11,6 +11,7 @@ public class SpawnLocation : MonoBehaviour
     private float spawnInterval = 0.5f;
     private float spawnTimer = 0f;
     private int spawnAmount = 7;
+    private SpawnAreaInfo spawnAreaInfo;
 
     private void Awake()
     {
@@ -27,10 +28,11 @@ public class SpawnLocation : MonoBehaviour
         spawnTimer = UnityEngine.Random.Range(spawnInterval * 0.9f, spawnInterval * 1.1f);
     }
 
-    public void Initialize(float interval, int amount)
+    public void Initialize(SpawnAreaInfo areaInfo, float interval)
     {
         spawnInterval = interval;
-        spawnAmount = amount;
+        spawnAreaInfo = areaInfo;
+        spawnAmount = areaInfo.spawnAmount;
         ResetTimer();
     }
 
@@ -48,11 +50,15 @@ public class SpawnLocation : MonoBehaviour
 
     private void SetupSpawn()
     {
+        if (spawnAmount <= 0) return;
+
         Vector3 spawnPosition =
             transform.position +
             (Vector3)(UnityEngine.Random.insideUnitCircle.normalized * spawnRadius);
-        if (spawnAmount <= 0) return;
+
+        EnemyType enemyType = spawnAreaInfo.GetRandomEnemyType();
+
         spawnAmount--;
-        onIntervalReached?.Invoke(spawnPosition);
+        onIntervalReached?.Invoke(enemyType, spawnPosition);
     }
 }
