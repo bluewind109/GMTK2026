@@ -22,11 +22,16 @@ public class SpawnLocation : MonoBehaviour
         // spriteRenderer.enabled = false;
     }
 
+    private void ResetTimer()
+    {
+        spawnTimer = UnityEngine.Random.Range(spawnInterval * 0.9f, spawnInterval * 1.1f);
+    }
+
     public void Initialize(float interval, int amount)
     {
         spawnInterval = interval;
         spawnAmount = amount;
-        spawnTimer = spawnInterval;
+        ResetTimer();
     }
 
     public void UpdateSpawnInterval()
@@ -36,15 +41,15 @@ public class SpawnLocation : MonoBehaviour
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0f)
         {
-            spawnTimer = spawnInterval;
+            ResetTimer();
             SetupSpawn();
         }
     }
 
     private void SetupSpawn()
     {
-        Vector3 spawnPosition = 
-            transform.position + 
+        Vector3 spawnPosition =
+            transform.position +
             (Vector3)(UnityEngine.Random.insideUnitCircle.normalized * spawnRadius);
         if (spawnAmount <= 0) return;
         spawnAmount--;

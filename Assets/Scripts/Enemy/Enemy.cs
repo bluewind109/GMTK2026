@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private Vector3 targetPosition;
 
     private int health = 1;
+    private float baseMoveSpeed = 2f;
     private float moveSpeed = 2f;
     private int damage = 1;
 
@@ -20,7 +21,8 @@ public class Enemy : MonoBehaviour
         this.initialPosition = initialPosition;
         this.targetPosition = targetPosition;
         health = info.health;
-        moveSpeed = info.moveSpeed;
+        baseMoveSpeed = info.moveSpeed;
+        SetMoveSpeed();
         damage = info.damage;
         transform.position = initialPosition;
     }
@@ -28,13 +30,19 @@ public class Enemy : MonoBehaviour
     public void Reset()
     {
         transform.position = initialPosition;
+        SetMoveSpeed();
         // gameObject.SetActive(false);
+    }
+
+    private void SetMoveSpeed()
+    {
+        moveSpeed = UnityEngine.Random.Range(baseMoveSpeed * 0.9f, baseMoveSpeed * 1.1f);
     }
 
     public void MoveTowardsTarget(float speedMultiplier)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
-        transform.position += direction * moveSpeed * speedMultiplier * Time.deltaTime;
+        transform.position += direction * baseMoveSpeed * speedMultiplier * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
