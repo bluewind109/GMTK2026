@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        health = GetComponent<Health>();
+        health = GetComponentInChildren<Health>();
         health.onDeath += () => Deactivate();
 
         hurtbox = GetComponentInChildren<Hurtbox>();

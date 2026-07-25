@@ -6,7 +6,7 @@ public class Hurtbox : MonoBehaviour
 
     public void SetTag(string tag)
     {
-        this.SetTag(tag);
+        this.gameObject.tag = tag;
     } 
 
     public void TakeDamage(int damage)
