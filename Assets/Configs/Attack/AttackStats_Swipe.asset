@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackStats_Swipe
   m_EditorClassIdentifier: Assembly-CSharp::AttackStats
   damage: 2
-  snapRange: 1
-  blankRange: 0.5
+  snapRange: 2
+  blankRange: 1
   cooldown: 0.75
   hitboxSize: {x: 4, y: 0.5}

@@ -5,14 +5,14 @@ public class Hitbox : MonoBehaviour
     public System.Action<Hurtbox> onHit;
 
     private string targetTag = "";
-    private Collider hitboxCollider;
+    private BoxCollider2D hitboxCollider;
 
     void Awake()
     {
-        hitboxCollider = GetComponent<Collider>();
+        hitboxCollider = GetComponent<BoxCollider2D>();
         if (hitboxCollider == null)
         {
-            Debug.LogError("Hitbox requires a Collider component.");
+            Debug.LogError("Hitbox requires a BoxCollider2D component.");
         }
     }
 
@@ -26,7 +26,7 @@ public class Hitbox : MonoBehaviour
         transform.localScale = new Vector3(size.x, size.y, 1f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(targetTag))
         {

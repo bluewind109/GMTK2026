@@ -1,9 +1,10 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
     private Hitbox hitbox;
-    private float attackDuration = 0.1f;
+    private float attackDuration = 5f;
     private int damage = 1;
 
     private const string TAG = "Enemy";
@@ -30,12 +31,15 @@ public class Attack : MonoBehaviour
         this.damage = damage;
         this.attackDuration = duration;
         hitbox.SetArea(size);
-        Execute();
+        _ = Execute();
     }
 
-    private void Execute()
+    private async UniTask Execute()
     {
-        Invoke("DeactivateHitbox", attackDuration);
+        await UniTask.Yield();
+        hitbox.gameObject.SetActive(true);
+        await UniTask.WaitForSeconds(attackDuration);
+        DeactivateHitbox();
     }
 
     private void DeactivateHitbox()
