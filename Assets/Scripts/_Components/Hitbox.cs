@@ -5,6 +5,16 @@ public class Hitbox : MonoBehaviour
     public System.Action<Hurtbox> onHit;
 
     private string targetTag = "";
+    private Collider hitboxCollider;
+
+    void Awake()
+    {
+        hitboxCollider = GetComponent<Collider>();
+        if (hitboxCollider == null)
+        {
+            Debug.LogError("Hitbox requires a Collider component.");
+        }
+    }
 
     public void Initialize(string targetTag)
     {

@@ -1,12 +1,12 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>280</x><y>300</y><w>200</w><h>180</h></coordinates><panel_attributes>/Class/
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>440</x><y>300</y><w>200</w><h>180</h></coordinates><panel_attributes>/Class/
 *Player*
 --
 -Transform startPosition
--float snapRange
 -eAttackType lastAttack
+-float globalAttackCooldown
 --
 +void ExecuteAttack()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>300</y><w>160</w><h>180</h></coordinates><panel_attributes>/Class/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>300</y><w>160</w><h>180</h></coordinates><panel_attributes>/Class/
 *AttackTimer*
 --
 -float duration
@@ -14,4 +14,4 @@
 +void Begin(float _duration)
 +void UpdateTime()
 --
-+onFinished</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>380</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element></diagram>
++onFinished</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>380</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element></diagram>
