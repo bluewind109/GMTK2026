@@ -22,7 +22,19 @@ public class Attack : MonoBehaviour
     void Start()
     {
         hitbox.Initialize(TAG);
-        hitbox.gameObject.SetActive(true);
+        hitbox.gameObject.SetActive(false);
+    }
+
+    public void Initialize(Vector2 size, int damage, float duration)
+    {
+        this.damage = damage;
+        this.attackDuration = duration;
+        hitbox.SetArea(size);
+        Execute();
+    }
+
+    private void Execute()
+    {
         Invoke("DeactivateHitbox", attackDuration);
     }
 

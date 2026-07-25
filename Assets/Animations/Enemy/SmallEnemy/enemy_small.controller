@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sprite
+  m_Name: enemy_small
   serializedVersion: 6
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -52,7 +52,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Animation
+  m_Name: run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

@@ -17,3 +17,11 @@ MonoBehaviour:
     health: 3
     moveSpeed: 2
     damage: 1
+    sprite: {fileID: 8991563339926328841, guid: f61970b0ce10b614a8e49301c6872e98, type: 3}
+    animator: {fileID: 0}
+  - enemyType: 1
+    health: 3
+    moveSpeed: 2
+    damage: 1
+    sprite: {fileID: 1437026341, guid: 36fc2a32c0d29464fa83dfe353f844e0, type: 3}
+    animator: {fileID: 0}

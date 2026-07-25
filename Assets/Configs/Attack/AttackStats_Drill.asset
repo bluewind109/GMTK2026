@@ -16,3 +16,4 @@ MonoBehaviour:
   snapRange: 1
   blankRange: 0.5
   cooldown: 0.75
+  hitboxSize: {x: 0.5, y: 3}

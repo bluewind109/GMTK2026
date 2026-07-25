@@ -2,35 +2,25 @@ using UnityEngine;
 
 public class AttackRange : MonoBehaviour
 {
-    public System.Action onEnemyInRange;
-    public System.Action onEnemyOutOfRange;
+    public System.Action<Enemy> onEnemyInRange;
+    public System.Action<Enemy> onEnemyOutOfRange;
 
     [SerializeField] private float spriteSize = 256f;
     [SerializeField] private float defaultSize = 100f;
-
-    private BoxCollider2D boxCollider;
-
-    void Awake()
-    {
-        boxCollider = GetComponent<BoxCollider2D>();
-        if (boxCollider == null)
-        {
-            Debug.LogError("AttackRange requires a BoxCollider2D component.");
-        }
-    }
 
     public void SetRange(float range)
     {
         float scale = range * (spriteSize / defaultSize);
         transform.localScale = new Vector3(scale, scale, 1f);
-        boxCollider.size = new Vector2(1f, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            onEnemyInRange?.Invoke();
+            Enemy enemy = collision.GetComponentInParent<Enemy>();
+            if (enemy != null)
+                onEnemyInRange?.Invoke(enemy);
         }
     }
 
@@ -38,7 +28,9 @@ public class AttackRange : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            onEnemyOutOfRange?.Invoke();
+            Enemy enemy = collision.GetComponentInParent<Enemy>();
+            if (enemy != null)
+                onEnemyOutOfRange?.Invoke(enemy);
         }
     }
 }
