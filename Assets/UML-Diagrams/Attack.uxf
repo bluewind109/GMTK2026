@@ -1,35 +1,54 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>370</x><y>330</y><w>150</w><h>130</h></coordinates><panel_attributes>/AbstractClass/
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>600</x><y>310</y><w>150</w><h>130</h></coordinates><panel_attributes>/AbstractClass/
 *Attack*
 --
 -eAttackType attackType
+-Hitbox hitbox
 -int damage
 -float attackInterval
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>570</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>550</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
 *StandingAttack*
 --
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>450</y><w>270</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>570</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>430</y><w>270</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>250;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>550</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
 *DashAttack*
 --
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>570</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>550</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
 *SwipeAttack*
 --
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>570</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>550</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
 *DrillAttack*
 --
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>450</y><w>120</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>450</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;120</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>450</y><w>260</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;240;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>330</y><w>130</w><h>140</h></coordinates><panel_attributes>/Enum/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>430</y><w>120</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>430</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;120</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>430</y><w>260</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;240;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>870</x><y>310</y><w>130</w><h>140</h></coordinates><panel_attributes>/Enum/
 *eAttackType*
 --
 +None
 +Standing
 +Dash
 +Swipe
-+Drill</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>390</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element></diagram>
++Drill</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>370</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>330</y><w>150</w><h>130</h></coordinates><panel_attributes>/ScriptableObject/
+*AttackStats*
+--
++int damage
++float snapRadius
++float nonTargetRadius
++float cooldown
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>150</y><w>170</w><h>130</h></coordinates><panel_attributes>/ScriptableObject/
+*AttackConfig*
+--
+-AttackInfo[] attackInfos
+--
++AttackInfo GetAttackInfo()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>150</y><w>150</w><h>130</h></coordinates><panel_attributes>/Class/
+*AttackInfo*
+--
++eAttackType type
++AttackStats stats</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>210</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>270</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element></diagram>
