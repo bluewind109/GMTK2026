@@ -5,13 +5,27 @@ public class Enemy : MonoBehaviour
 {
     public Action<Enemy> onDeath;
 
+    [SerializeField] private Transform contactPoint;
+
+    private Health health;
+    private Hurtbox hurtbox;
+    private const string TAG = "Enemy";
+
     private Vector3 initialPosition;
     private Vector3 targetPosition;
 
-    private int health = 1;
     private float baseMoveSpeed = 2f;
     private float moveSpeed = 2f;
     private int damage = 1;
+
+    void Awake()
+    {
+        health = GetComponent<Health>();
+        health.onDeath += () => Deactivate();
+
+        hurtbox = GetComponentInChildren<Hurtbox>();
+        hurtbox.onHit += OnHit;
+    }
 
     public void Initialize(
         EnemyInfo info, 
@@ -20,11 +34,13 @@ public class Enemy : MonoBehaviour
     {
         this.initialPosition = initialPosition;
         this.targetPosition = targetPosition;
-        health = info.health;
         baseMoveSpeed = info.moveSpeed;
         SetMoveSpeed();
         damage = info.damage;
         transform.position = initialPosition;
+        
+        health.Initialize(info.health);
+        hurtbox.SetTag(TAG);
     }
 
     public void Reset()
@@ -62,5 +78,11 @@ public class Enemy : MonoBehaviour
         onDeath?.Invoke(this);
     }
 
+    private void OnHit(int damage)
+    {
+        health.TakeDamage(damage);
+    }
+
     public bool IsActive() => gameObject.activeSelf;
+    public Transform GetContactPoint() => contactPoint;
 }
