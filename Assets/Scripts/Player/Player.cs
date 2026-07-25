@@ -57,12 +57,16 @@ public class Player : MonoBehaviour
         if (nearestEnemy != null)
         {
             attackRange.SetRange(attackData.GetSnapRange());
+            attackRange.gameObject.SetActive(true);
             SnapToNearestEnemy(nearestEnemy);
             ExecuteAttack(attackData);
             return;
         }
 
-        // If no nearest enemy, still execute attack with blank range
+        // If no nearest enemy, move forward by blank range and execute attack
+        transform.position += transform.forward * attackData.GetBlankRange();
+        attackRange.SetRange(attackData.GetBlankRange());
+        attackRange.gameObject.SetActive(true);
         ExecuteAttack(attackData);
     }
 
@@ -86,8 +90,8 @@ public class Player : MonoBehaviour
 
         Attack attack = Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
         attack.Initialize(
-            attackData.GetHitboxSize(), 
-            attackData.GetDamage(), 
+            attackData.GetHitboxSize(),
+            attackData.GetDamage(),
             attackData.GetCooldown()
         );
         globalAttackTimer.Start(globalAttackCooldown);
@@ -98,7 +102,6 @@ public class Player : MonoBehaviour
         if (enemiesInRange.Count == 0)
         {
             Debug.Log("No enemies in range.");
-            // TODO still execute attack but using blank range
             return null;
         }
 

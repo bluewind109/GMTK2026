@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackStats_Drill
   m_EditorClassIdentifier: Assembly-CSharp::AttackStats
   damage: 2
-  snapRange: 1
-  blankRange: 0.5
+  snapRange: 2
+  blankRange: 1
   cooldown: 0.75
   hitboxSize: {x: 0.5, y: 3}
