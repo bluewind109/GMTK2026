@@ -88,11 +88,17 @@ public class Player : MonoBehaviour
             return;
         }
 
+        Vector2 attackOffset = Vector2.zero;
+        if (attackData.type == eAttackType.Drill)
+        {
+            attackOffset = new Vector2(0f, attackData.GetHitboxSize().y / 2f);
+        }
+
         Attack attack = Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
         attack.Initialize(
             attackData.GetHitboxSize(),
             attackData.GetDamage(),
-            attackData.GetCooldown()
+            attackOffset
         );
         globalAttackTimer.Start(globalAttackCooldown);
     }
