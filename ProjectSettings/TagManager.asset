@@ -50,6 +50,9 @@ TagManager:
   - name: Range
     uniqueID: 3626605429
     locked: 0
+  - name: HitboxArea
+    uniqueID: 213742509
+    locked: 0
   - name: Enemy
     uniqueID: 1843544483
     locked: 0
