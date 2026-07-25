@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     private Health health;
     private Hurtbox hurtbox;
+    private HitFlash hitFlash;
     private const string TAG = "Enemy";
 
     private Vector3 initialPosition;
@@ -25,6 +26,8 @@ public class Enemy : MonoBehaviour
 
         hurtbox = GetComponentInChildren<Hurtbox>();
         hurtbox.onHit += OnHit;
+
+        hitFlash = GetComponentInChildren<HitFlash>();
     }
 
     public void Initialize(
@@ -80,6 +83,7 @@ public class Enemy : MonoBehaviour
 
     private void OnHit(int damage)
     {
+        hitFlash.TriggerHitFlash();
         health.TakeDamage(damage);
     }
 

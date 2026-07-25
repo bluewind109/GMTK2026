@@ -62,7 +62,7 @@ public class SpawnWeight
 
 public enum EnemyType
 {
-    TypeA,
-    TypeB,
+    Small,
+    Big,
     TypeC
 }

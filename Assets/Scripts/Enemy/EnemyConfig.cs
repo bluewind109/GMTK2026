@@ -28,4 +28,5 @@ public class EnemyInfo
     public int health = 3;
     public float moveSpeed = 2f;
     public int damage = 1;
+    public Enemy enemyPrefab;
 }
