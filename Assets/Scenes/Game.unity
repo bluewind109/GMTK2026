@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000cf9ae4b2a341e26d759b29d853303b78
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -920,14 +920,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2067924410388288668, guid: 02544db0d6d271f4f9abd5c34ae33b35, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7482667652216324306, guid: dd076ba7befbd45448de4ec2d31aafdd, type: 3}
-    - target: {fileID: 2067924410388288668, guid: 02544db0d6d271f4f9abd5c34ae33b35, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5577925676490551870, guid: 02544db0d6d271f4f9abd5c34ae33b35, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1209,10 +1201,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6304403159397752709, guid: 477fdbcbd26472c46af2c14d6c91ee30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8843172911963932364, guid: 477fdbcbd26472c46af2c14d6c91ee30, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

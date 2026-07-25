@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
         transform.position += direction * baseMoveSpeed * speedMultiplier * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        contactPoint.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
     private void Attack()

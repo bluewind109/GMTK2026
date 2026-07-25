@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2448305357966011962, guid: 2998ef9d9fdaec540a4335c9c65b6229, type: 3}
-      propertyPath: m_Color.a
-      value: 0.33333334
-      objectReference: {fileID: 0}
     - target: {fileID: 4535670637272827945, guid: 2998ef9d9fdaec540a4335c9c65b6229, type: 3}
       propertyPath: m_Name
       value: Spawn-Center Variant
