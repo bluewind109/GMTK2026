@@ -124,6 +124,7 @@ public class TurnController : MonoBehaviour
     private void PlayCountdownEffect()
     {
         countdownText.transform.DOKill();
+        countdownText.transform.localScale = Vector3.one;
         Tween countdownTween = countdownText.transform.DOPunchScale(Vector3.one * 1.5f, 0.3f, 1, 0.5f);
     }
 
