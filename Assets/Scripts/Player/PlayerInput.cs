@@ -74,19 +74,19 @@ public class PlayerInput : MonoBehaviour
         // This makes it reliable regardless of which key the player presses first.
         if ((leftDown && upHeld) || (leftHeld && upDown))
         {
-            onDirectionPressed?.Invoke(eDirection.TopLeft);
+            onDirectionPressed?.Invoke(eDirection.UpLeft);
         }
         else if ((leftDown && downHeld) || (leftHeld && downDown))
         {
-            onDirectionPressed?.Invoke(eDirection.BottomLeft);
+            onDirectionPressed?.Invoke(eDirection.DownLeft);
         }
         else if ((rightDown && upHeld) || (rightHeld && upDown))
         {
-            onDirectionPressed?.Invoke(eDirection.TopRight);
+            onDirectionPressed?.Invoke(eDirection.UpRight);
         }
         else if ((rightDown && downHeld) || (rightHeld && downDown))
         {
-            onDirectionPressed?.Invoke(eDirection.BottomRight);
+            onDirectionPressed?.Invoke(eDirection.DownRight);
         }
         // Cardinal: fires only when no perpendicular key is held, so that
         // pressing a second key always upgrades a cardinal to a diagonal.
@@ -112,11 +112,11 @@ public class PlayerInput : MonoBehaviour
 public enum eDirection
 {
     Left,
-    TopLeft,
-    BottomLeft,
+    UpLeft,
+    DownLeft,
     Right,
-    TopRight,
-    BottomRight,
+    UpRight,
+    DownRight,
     Up,
     Down
 }
