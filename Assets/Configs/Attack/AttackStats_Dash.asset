@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackStats_Dash
   m_EditorClassIdentifier: Assembly-CSharp::AttackStats
   damage: 1
-  snapRange: 4
-  blankRange: 2
+  snapRange: 5
+  blankRange: 1
   cooldown: 0.5
-  hitboxSize: {x: 2, y: 1.5}
+  hitboxSize: {x: 2.5, y: 1.5}

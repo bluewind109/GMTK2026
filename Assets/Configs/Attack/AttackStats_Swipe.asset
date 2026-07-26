@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd05f52f96e91ba46a0beec951644b7f, type: 3}
   m_Name: AttackStats_Swipe
   m_EditorClassIdentifier: Assembly-CSharp::AttackStats
-  damage: 2
+  damage: 3
   snapRange: 2
-  blankRange: 1
-  cooldown: 0.75
-  hitboxSize: {x: 5.5, y: 5}
+  blankRange: 0.25
+  cooldown: 1.5
+  hitboxSize: {x: 6.5, y: 3}
