@@ -20,11 +20,11 @@ public class MainMenuInput : MonoBehaviour
         if (!isEnabled) return;
         if (!IsAllowedInput()) return;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             onNavigateUp?.Invoke();
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             onNavigateDown?.Invoke();
         }
@@ -40,8 +40,8 @@ public class MainMenuInput : MonoBehaviour
 
     private bool IsAllowedInput()
     {
-        return Input.GetKeyDown(KeyCode.UpArrow) ||
-               Input.GetKeyDown(KeyCode.DownArrow) ||
+        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) ||
+               Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) ||
                Input.GetKeyDown(KeyCode.Return) ||
                Input.GetKeyDown(KeyCode.Backspace);
     }
