@@ -13,8 +13,23 @@ public class PlayerInput : MonoBehaviour
     private const KeyCode SWIPE_ATTACK = KeyCode.L;
     private const KeyCode DRILL_ATTACK = KeyCode.I;
 
+    private bool isDirectionInputEnabled = false;
+    private bool isAttackInputEnabled = false;
+
+    public void EnableDirectionInput(bool enable)
+    {
+        isDirectionInputEnabled = enable;
+    }
+
+    public void EnableAttackInput(bool enable)
+    {
+        isAttackInputEnabled = enable;
+    }
+
     public void UpdateAttackInput()
     {
+        if (!isAttackInputEnabled) return;
+
         if (Input.GetKeyDown(STANDING_ATTACK))
         {
             onAttackPressed?.Invoke(eAttackType.Standing);
@@ -35,6 +50,8 @@ public class PlayerInput : MonoBehaviour
 
     public void UpdateDirectionInput()
     {
+        if (!isDirectionInputEnabled) return;
+
         if (Input.GetKey(ROTATE_LEFT))
         {
             onDirectionPressed?.Invoke(eDirection.Left);

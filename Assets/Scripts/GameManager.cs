@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 		Instance = this;
+
+		turnController.onPlayerTurnStart += OnPlayerTurnStart;
+		turnController.onEnemyTurnStart += OnEnemyTurnStart;
 	}
 
 	void OnDestroy()
@@ -29,6 +32,9 @@ public class GameManager : MonoBehaviour
 		{
 			Instance = null;
 		}
+
+		turnController.onPlayerTurnStart -= OnPlayerTurnStart;
+		turnController.onEnemyTurnStart -= OnEnemyTurnStart;
 	}
 
 	void Start()
@@ -50,6 +56,16 @@ public class GameManager : MonoBehaviour
 
 			turnController.UpdateTurn();
 		}
+	}
+
+	private void OnPlayerTurnStart()
+	{
+		player.OnTurnStart();
+	}
+
+	private void OnEnemyTurnStart()
+	{
+		player.OnTurnEnd();
 	}
 }
 

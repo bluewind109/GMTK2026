@@ -9,7 +9,14 @@ public class Turn
     private TurnController controller;
     private float duration = 1f;
     private float currentTime = 0f;
-    public float TimePercent => Mathf.Clamp01(currentTime / duration);
+    public float TimePercent
+    {
+        get
+        {
+            if (duration <= 0f) return 0f;
+            return Mathf.Clamp01(currentTime / duration);
+        }
+    }
 
     private bool isFinished = false;
 
@@ -35,8 +42,9 @@ public class Turn
 
     public void End()
     {
-        onTurnEnd?.Invoke();
+        if (isFinished) return;
         isFinished = true;
+        onTurnEnd?.Invoke();
     }
 
     public void UpdateDuration()
