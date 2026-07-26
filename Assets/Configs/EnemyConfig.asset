@@ -15,11 +15,11 @@ MonoBehaviour:
   enemyInfos:
   - enemyType: 0
     health: 3
-    moveSpeed: 2
+    moveSpeed: 4
     damage: 1
     enemyPrefab: {fileID: 7773470685073123821, guid: 3618a7c1e81ee724f9bb0ebe8e458fd3, type: 3}
   - enemyType: 1
-    health: 6
-    moveSpeed: 1
+    health: 8
+    moveSpeed: 2
     damage: 2
     enemyPrefab: {fileID: 6355538612565664745, guid: d5b58b258df862a4e903324bfda8f6b7, type: 3}
