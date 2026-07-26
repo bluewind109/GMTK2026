@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8dcb4e86b26d146a89eaea4bca3421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  levelConfig: {fileID: 11400000, guid: b5356f8ce970dde4db0736c4dd69c301, type: 2}
+  enemyManager: {fileID: 0}
+  turnController: {fileID: 0}
+  player: {fileID: 0}

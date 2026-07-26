@@ -62,6 +62,7 @@ public class Attack : MonoBehaviour
     private void DeactivateHitbox()
     {
         hitbox.gameObject.SetActive(false);
+        Destroy(this.gameObject, 0.5f);
     }
 
     private void OnHit(Hurtbox hurtbox)

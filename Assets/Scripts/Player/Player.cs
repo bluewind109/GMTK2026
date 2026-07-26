@@ -291,7 +291,7 @@ public class Player : MonoBehaviour
     public void OnTurnEnd()
     {
         // playerInput?.EnableDirectionInput(false);
-        playerInput?.EnableAttackInput(true);
+        playerInput?.EnableAttackInput(false);
         ResetPosition();
         playerShadow.SetActive(false);
         isFirstAttackExecuted = false;

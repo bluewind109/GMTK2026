@@ -7,7 +7,6 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Configs")]
     [SerializeField] private EnemyConfig enemyConfig;
-    [SerializeField] private LevelConfig levelConfig;
 
     [Header("Enemy")]
     [SerializeField] private Transform enemiesContainer;
@@ -44,9 +43,8 @@ public class EnemyManager : MonoBehaviour
         spawnLocation_Center.onIntervalReached -= SpawnEnemy;
     }
 
-    public void Test_StartLevel1()
+    public void StartLevel(LevelInfo levelInfo)
     {
-        LevelInfo levelInfo = levelConfig.GetLevelInfo(0);
         spawnLocation_Left.Initialize(levelInfo.leftSpawn, levelInfo.spawnInterval);
         spawnLocation_Right.Initialize(levelInfo.rightSpawn, levelInfo.spawnInterval);
         spawnLocation_Center.Initialize(levelInfo.centerSpawn, levelInfo.spawnInterval);

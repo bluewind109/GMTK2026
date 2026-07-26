@@ -27,5 +27,6 @@ public class Base : MonoBehaviour
     {
         // Handle base death logic here
         gameObject.SetActive(false);
+        GameManager.Instance.EndGame(false);
     }
 }
