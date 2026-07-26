@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform attackPointPivot;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float globalAttackCooldown = 0.1f;
+    [SerializeField] private GameObject playerShadow;
+
     private const int LOOK_UP = 0;
     private const int LOOK_UP_RIGHT = -45;
     private const int LOOK_RIGHT = -90;
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
     private const string SWIPE_ATTACK_PREFIX = "swipe_attack_";
     private const string DRILL_ATTACK_PREFIX = "drill_attack_";
 
+    private bool isFirstAttackExecuted = false;
+
     private int[] viableAngles;
 
     void Start()
@@ -54,6 +58,8 @@ public class Player : MonoBehaviour
         attackAnimationBroadcasters = animator.GetBehaviours<AttackAnimationBroadcaster>();
         foreach (var broadcaster in attackAnimationBroadcasters)
             broadcaster.onAttackAnimationFinished += OnAttackAnimationFinished;
+
+        playerShadow.SetActive(false);
     }
 
     void OnDestroy()
@@ -120,6 +126,12 @@ public class Player : MonoBehaviour
         {
             Debug.LogError($"No attack prefab found for attack type: {attackData.type}");
             return;
+        }
+
+        if (!isFirstAttackExecuted)
+        {
+            isFirstAttackExecuted = true;
+            playerShadow.SetActive(true);
         }
 
         eAttackType attackType = attackData.type;
@@ -272,6 +284,8 @@ public class Player : MonoBehaviour
         // playerInput?.EnableDirectionInput(false);
         playerInput?.EnableAttackInput(false);
         ResetPosition();
+        playerShadow.SetActive(false);
+        isFirstAttackExecuted = false;
     }
 
     private void ResetPosition()

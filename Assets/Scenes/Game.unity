@@ -1076,6 +1076,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7669815085954892401, guid: 02544db0d6d271f4f9abd5c34ae33b35, type: 3}
+      propertyPath: playerShadow
+      value: 
+      objectReference: {fileID: 8583125677729816172}
+    - target: {fileID: 7669815085954892401, guid: 02544db0d6d271f4f9abd5c34ae33b35, type: 3}
       propertyPath: startLocation
       value: 
       objectReference: {fileID: 2105701953}
@@ -1762,6 +1766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShadow
       objectReference: {fileID: 0}
+    - target: {fileID: 1707840795313738779, guid: ec9bc9b6787ce3d47bbb8108dfd73e0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4396433251904907442, guid: ec9bc9b6787ce3d47bbb8108dfd73e0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1807,6 +1815,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec9bc9b6787ce3d47bbb8108dfd73e0e, type: 3}
+--- !u!1 &8583125677729816172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1707840795313738779, guid: ec9bc9b6787ce3d47bbb8108dfd73e0e, type: 3}
+  m_PrefabInstance: {fileID: 8583125677729816171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
