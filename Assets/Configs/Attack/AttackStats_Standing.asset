@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackStats
   damage: 1
   snapRange: 2
-  blankRange: 1
-  cooldown: 0.25
-  hitboxSize: {x: 1.5, y: 2}
+  blankRange: 0.25
+  cooldown: 0.5
+  hitboxSize: {x: 2.5, y: 1.5}
