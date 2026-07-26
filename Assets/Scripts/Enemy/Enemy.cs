@@ -21,7 +21,13 @@ public class Enemy : MonoBehaviour
     private float baseMoveSpeed = 2f;
     private float moveSpeed = 2f;
     private int damage = 1;
+
+    private Hurtbox baseHurtbox;
+    private float attackInterval = 1f;
+    private float attackTimer = 0f;
+
     private bool isActive = false;
+    private bool isInTargetRange = false;
 
     void Awake()
     {
@@ -48,11 +54,8 @@ public class Enemy : MonoBehaviour
         transform.position = initialPosition;
         
         health.Initialize(info.health);
-
         hurtbox?.SetTag(TAG);
-
         slashEffect.ToggleSprite(false);
-
         isActive = true;
     }
 
@@ -60,7 +63,6 @@ public class Enemy : MonoBehaviour
     {
         transform.position = initialPosition;
         SetMoveSpeed();
-        // gameObject.SetActive(false);
     }
 
     private void SetMoveSpeed()
@@ -71,16 +73,28 @@ public class Enemy : MonoBehaviour
     public void MoveTowardsTarget(float speedMultiplier)
     {
         if (!isActive) return;
+        if (isInTargetRange)
+        {
+            attackTimer += Time.deltaTime;
+            if (attackTimer >= attackInterval)
+                Attack();
+            return;
+        }
 
         Vector3 directionToTarget = (targetPosition - transform.position).normalized;
-        transform.position += directionToTarget * baseMoveSpeed * speedMultiplier * Time.deltaTime;
+        transform.position += directionToTarget * moveSpeed * speedMultiplier * Time.deltaTime;
         Vector3 directionToPlayer = (GameManager.Instance.GetPlayer().transform.position - transform.position).normalized;
         contactPointPivot.transform.rotation = Quaternion.LookRotation(Vector3.forward, directionToPlayer);
     }
 
     private void Attack()
     {
-        // TODO
+        if (!isActive) return;
+        if (baseHurtbox == null) return;
+        if (attackTimer < attackInterval) return;
+
+        attackTimer = 0f;
+        baseHurtbox.TakeDamage(damage);
     }
 
     public void Deactivate()
@@ -102,6 +116,14 @@ public class Enemy : MonoBehaviour
     {
         hitFlash.TriggerHitFlash();
         health.TakeDamage(damage);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Base")) return;
+
+        isInTargetRange = true;
+        baseHurtbox = collision.GetComponent<Hurtbox>();
     }
 
     public bool IsActive() => isActive;
