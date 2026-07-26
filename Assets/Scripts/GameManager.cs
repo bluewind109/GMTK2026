@@ -12,12 +12,16 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private TurnController turnController;
 	[SerializeField] private Player player;
 	[SerializeField] private Base playerBase;
+	[SerializeField] private GameObject introScreen;
+	[SerializeField] private TextMeshProUGUI introText;
 	[SerializeField] private TextMeshProUGUI levelText;
 	[SerializeField] private PopupEndGame popupEndGame;
 
 	private int levelIndex = 0;
 	private int numberOfTurns = 1;
 	private int numberOfLevels = 1;
+	private bool isLastTurn = false;
+	private int totalEnemies = 0;
 	private GamePhase currentPhase = GamePhase.None;
 
 	public Player GetPlayer() => player;
@@ -57,7 +61,32 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		turnController.Init();
 		numberOfLevels = levelConfig.GetNumberOfLevels();
-        AudioManager.Instance.PlayBgm();
+
+		currentPhase = GamePhase.Start;
+		PlayIntro().Forget();
+
+
+	}
+
+	public async UniTask PlayIntro()
+	{
+		introText.text = "SURVIVE!";
+		AudioManager.Instance.PlayThreeTwoOneCountdownSfx();
+		await UniTask.Delay(System.TimeSpan.FromSeconds(1f));
+		introText.text = "3";
+		AudioManager.Instance.PlayThreeTwoOneCountdownSfx();
+		await UniTask.Delay(System.TimeSpan.FromSeconds(1f));
+		introText.text = "2";
+		AudioManager.Instance.PlayThreeTwoOneCountdownSfx();
+		await UniTask.Delay(System.TimeSpan.FromSeconds(1f));
+		introText.text = "1";
+		AudioManager.Instance.PlayThreeTwoOneCountdownSfx();
+		await UniTask.Delay(System.TimeSpan.FromSeconds(1f));
+		AudioManager.Instance.PlayZeroCountdownSfx();
+		introScreen.gameObject.SetActive(false);
+
+		AudioManager.Instance.PlayBgm();
+		totalEnemies = levelConfig.GetTotalEnemies();
 		StartLevel(levelIndex);
 	}
 
@@ -137,6 +166,16 @@ public class GameManager : MonoBehaviour
 		levelText.gameObject.SetActive(true);
 		await UniTask.Delay(System.TimeSpan.FromSeconds(duration));
 		levelText.gameObject.SetActive(false);
+	}
+
+	public void DecreaseTotalEnemies()
+	{
+		totalEnemies --;
+		if (totalEnemies < 0)
+		{
+			totalEnemies = 0;
+			EndGame(true).Forget();
+		}
 	}
 }
 

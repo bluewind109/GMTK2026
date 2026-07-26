@@ -108,9 +108,16 @@ public class TurnController : MonoBehaviour
         if (secondsRemaining != currentCountdown)
         {
             currentCountdown = secondsRemaining;
+            if (currentCountdown == 0)
+            {
+                AudioManager.Instance.PlayZeroCountdownSfx();
+            }
+            else if (currentCountdown <= 3)
+            {
+                AudioManager.Instance.PlayThreeTwoOneCountdownSfx();
+            }
             countdownText.text = currentCountdown.ToString();
             PlayCountdownEffect();
-            AudioManager.Instance.PlayCountdownSfx();
         }
     }
 

@@ -13,8 +13,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip bgm;
     [SerializeField] private AudioClip[] playerAttackClips;
     [SerializeField] private AudioClip[] enemyDeathClips;
-    [SerializeField] private AudioClip countdownClip;
     [SerializeField] private AudioClip playerTurnClip;
+    [SerializeField] private AudioClip threeTwoOneCountDownClip;
+    [SerializeField] private AudioClip zeroCountDownClip;
+    [SerializeField] private AudioClip loseClip;
+    [SerializeField] private AudioClip winClip;
 
     private int playerAttackClipIndex = 0;
     private int enemyDeathClipIndex = 0;
@@ -125,6 +128,9 @@ public class AudioManager : MonoBehaviour
         enemyDeathClipIndex = (enemyDeathClipIndex + 1) % enemyDeathClips.Length;
     }
 
-    public void PlayCountdownSfx() => PlaySfx(countdownClip);
     public void PlayPlayerTurnSfx() => PlaySfx(playerTurnClip);
+    public void PlayThreeTwoOneCountdownSfx() => PlaySfx(threeTwoOneCountDownClip);
+    public void PlayZeroCountdownSfx() => PlaySfx(zeroCountDownClip);
+    public void PlayLoseSfx() => PlaySfx(loseClip);
+    public void PlayWinSfx() => PlaySfx(winClip);
 }

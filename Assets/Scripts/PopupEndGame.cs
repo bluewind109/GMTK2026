@@ -26,6 +26,10 @@ public class PopupEndGame : MonoBehaviour
 
     public void Show(bool isWin)
     {
+        if (isWin)
+            AudioManager.Instance.PlayWinSfx();
+        else
+            AudioManager.Instance.PlayLoseSfx();
         AudioManager.Instance.StopBgm();
         gameObject.SetActive(true);
         titleText.text = isWin ? "You Win!" : "Game Over";

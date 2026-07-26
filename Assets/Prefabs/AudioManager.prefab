@@ -55,8 +55,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6e3bd77517a5a204e864e3794318ef4c, type: 3}
   - {fileID: 8300000, guid: 6400178b8b92b5e46bcd563e64e70d2a, type: 3}
   - {fileID: 8300000, guid: 957dc94d00fdcb444803534c4a5351cd, type: 3}
-  countdownClip: {fileID: 0}
   playerTurnClip: {fileID: 8300000, guid: c549ecea5ad7a8f48a9c054c0c9e0dd4, type: 3}
+  threeTwoOneCountDownClip: {fileID: 8300000, guid: 783bdee00eaad1f45bd3ba6df716b482, type: 3}
+  zeroCountDownClip: {fileID: 8300000, guid: 805c643af81b12747ad4595e0cd110e7, type: 3}
+  loseClip: {fileID: 8300000, guid: b7d2f091feb97074cb67b2f9a33193bb, type: 3}
+  winClip: {fileID: 8300000, guid: 203b5187814a8fe40bf90e870be22e79, type: 3}
 --- !u!1001 &492811824046340843
 PrefabInstance:
   m_ObjectHideFlags: 0

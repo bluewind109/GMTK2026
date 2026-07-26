@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
         hurtbox.gameObject.SetActive(false);
         TriggerSlash();
         AudioManager.Instance.PlayEnemyDeathSfx();
+        GameManager.Instance.DecreaseTotalEnemies();
         onDeath?.Invoke(this);
     }
 
