@@ -160,24 +160,31 @@ public class Player : MonoBehaviour
     {
         // playerInput.EnableDirectionInput(false);
         playerInput.EnableAttackInput(false);
+        ResetPosition();
+    }
+
+    private void ResetPosition()
+    {
+        transform.position = startLocation.position;
+        transform.rotation = startLocation.rotation;
     }
 
     [Header("Rotation Settings")]
     [SerializeField] private float rotationRateHorizontal = 45f;
     [SerializeField] private float rotationRateVertical = 180f;
-	private void RotateRight()
-	{
+    private void RotateRight()
+    {
         float currentRotationZ = transform.eulerAngles.z;
         float targetRotationZ = currentRotationZ - rotationRateHorizontal;
-		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
-	}
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
 
-	private void RotateLeft()
-	{
+    private void RotateLeft()
+    {
         float currentRotationZ = transform.eulerAngles.z;
         float targetRotationZ = currentRotationZ + rotationRateHorizontal;
-		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
-	}
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
 
     private void LookUp()
     {
