@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private TurnController turnController;
 	[SerializeField] private Player player;
 	[SerializeField] private TextMeshProUGUI levelText;
+	[SerializeField] private PopupEndGame popupEndGame;
 
 	private int levelIndex = 0;
 	private int numberOfTurns = 1;
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
 	IEnumerator Start()
 	{
 		// currentPhase = GamePhase.Start;
+		popupEndGame.Hide();
 		yield return new WaitForSeconds(1f);
 		turnController.Init();
 		numberOfLevels = levelConfig.GetNumberOfLevels();
@@ -123,6 +125,7 @@ public class GameManager : MonoBehaviour
 	public void EndGame(bool isWin)
 	{
 		currentPhase = GamePhase.End;
+		popupEndGame.Show(isWin);
 	}
 
 	private async UniTask ShowLevelText(string text, float duration)
