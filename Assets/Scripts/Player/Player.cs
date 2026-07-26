@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
 
         playerInput = GetComponentInChildren<PlayerInput>();
         playerInput.onAttackPressed += OnAttackPressed;
+        playerInput.onDirectionPressed += OnDirectionPressed;
 
         attackRange = GetComponentInChildren<AttackRange>();
         attackRange.gameObject.SetActive(false);
@@ -31,19 +33,21 @@ public class Player : MonoBehaviour
     void OnDestroy()
     {
         playerInput.onAttackPressed -= OnAttackPressed;
+        playerInput.onDirectionPressed -= OnDirectionPressed;
     }
 
     void Update()
     {
         globalAttackTimer.Update(Time.deltaTime);
-        playerInput.UpdateInput();
+        playerInput.UpdateDirectionInput();
+        playerInput.UpdateAttackInput();
     }
 
     private void OnAttackPressed(eAttackType attackType)
     {
         if (!canAttack) return;
 
-        Debug.Log($"Player pressed attack: {attackType}");
+        // Debug.Log($"Player pressed attack: {attackType}");
         lastAttackType = attackType;
         AttackData attackData = attackConfig.GetAttackData(attackType);
 
@@ -74,7 +78,6 @@ public class Player : MonoBehaviour
         Vector3 directionToEnemy = (nearestEnemy.transform.position - transform.position).normalized;
         transform.position = snapPosition;
         transform.rotation = Quaternion.LookRotation(Vector3.forward, directionToEnemy);
-        Debug.Log($"Snapped to nearest enemy: {nearestEnemy.name} at position {snapPosition}");
     }
 
     private void ExecuteAttack(AttackData attackData)
@@ -124,11 +127,46 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (nearestEnemy != null)
-            Debug.Log($"Nearest enemy found: {nearestEnemy.name} at distance {nearestDistance}");
-        else
-            Debug.Log("No enemies in range.");
-
         return nearestEnemy;
     }
+
+    private void OnDirectionPressed(eDirection direction)
+    {
+        if (direction == eDirection.Left)
+        {
+            RotateLeft();
+        }
+        else if (direction == eDirection.Right)
+        {
+            RotateRight();
+        }
+    }
+
+    public void OnTurnStart()
+    {
+        playerInput.EnableDirectionInput(true);
+        playerInput.EnableAttackInput(true);
+    }
+
+    public void OnTurnEnd()
+    {
+        playerInput.EnableDirectionInput(false);
+        playerInput.EnableAttackInput(false);
+    }
+
+    [Header("Rotation Settings")]
+    [SerializeField] private float rotationRate = 2.5f;
+	private void RotateRight()
+	{
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ - rotationRate * Time.deltaTime;
+		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+	}
+
+	private void RotateLeft()
+	{
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ + rotationRate * Time.deltaTime;
+		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+	}
 }

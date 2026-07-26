@@ -2,15 +2,34 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public System.Action<eDirection> onDirectionPressed;
     public System.Action<eAttackType> onAttackPressed;
+
+    private const KeyCode ROTATE_LEFT = KeyCode.A;
+    private const KeyCode ROTATE_RIGHT = KeyCode.D;
 
     private const KeyCode STANDING_ATTACK = KeyCode.J;
     private const KeyCode DASH_ATTACK = KeyCode.K;
     private const KeyCode SWIPE_ATTACK = KeyCode.L;
     private const KeyCode DRILL_ATTACK = KeyCode.I;
 
-    public void UpdateInput()
+    private bool isDirectionInputEnabled = false;
+    private bool isAttackInputEnabled = false;
+
+    public void EnableDirectionInput(bool enable)
     {
+        isDirectionInputEnabled = enable;
+    }
+
+    public void EnableAttackInput(bool enable)
+    {
+        isAttackInputEnabled = enable;
+    }
+
+    public void UpdateAttackInput()
+    {
+        if (!isAttackInputEnabled) return;
+
         if (Input.GetKeyDown(STANDING_ATTACK))
         {
             onAttackPressed?.Invoke(eAttackType.Standing);
@@ -28,4 +47,24 @@ public class PlayerInput : MonoBehaviour
             onAttackPressed?.Invoke(eAttackType.Drill);
         }
     }
+
+    public void UpdateDirectionInput()
+    {
+        if (!isDirectionInputEnabled) return;
+
+        if (Input.GetKey(ROTATE_LEFT))
+        {
+            onDirectionPressed?.Invoke(eDirection.Left);
+        }
+        else if (Input.GetKey(ROTATE_RIGHT))
+        {
+            onDirectionPressed?.Invoke(eDirection.Right);
+        }
+    }
+}
+
+public enum eDirection
+{
+    Left,
+    Right
 }

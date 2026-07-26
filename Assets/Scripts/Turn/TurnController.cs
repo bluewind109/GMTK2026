@@ -1,7 +1,13 @@
+using System;
 using UnityEngine;
 
 public class TurnController : MonoBehaviour
 {
+    public Action onEnemyTurnStart;
+    public Action onEnemyTurnEnd;
+    public Action onPlayerTurnStart;
+    public Action onPlayerTurnEnd;
+
     [SerializeField] private TurnSO config;
     [SerializeField] private float playerDuration = 5f;
     [SerializeField] private TurnTimerUI timerUI;
@@ -43,8 +49,10 @@ public class TurnController : MonoBehaviour
 
     private void SetTurn(Turn turn)
     {
+        if (turn == null) return;
         if (currentTurn == turn) return;
 
+        currentTurn?.End();
         currentTurn = turn;
 
         switch (currentTurn)
@@ -52,12 +60,12 @@ public class TurnController : MonoBehaviour
             case Turn t when t == playerTurn:
                 timerUI.TogglePlayerTurnFill(true);
                 timerUI.ToggleEnemyTurnFill(false);
-                enemyTurn.End();
+                onPlayerTurnStart?.Invoke();
                 break;
             case Turn t when t == enemyTurn:
                 timerUI.TogglePlayerTurnFill(false);
                 timerUI.ToggleEnemyTurnFill(true);
-                playerTurn.End();
+                onEnemyTurnStart?.Invoke();
                 break;
         }
 
