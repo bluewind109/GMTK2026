@@ -26,6 +26,7 @@ public class PopupEndGame : MonoBehaviour
 
     public void Show(bool isWin)
     {
+        AudioManager.Instance.StopBgm();
         gameObject.SetActive(true);
         titleText.text = isWin ? "You Win!" : "Game Over";
         resultImage.sprite = isWin ? winSprite : loseSprite;
@@ -38,12 +39,14 @@ public class PopupEndGame : MonoBehaviour
 
     private void OnRestartButtonClicked()
     {
+        AudioManager.Instance.StopBgm();
         // Reload the current scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
     
     private void OnQuitButtonClicked()
     {
+        AudioManager.Instance.StopBgm();
         Application.Quit();
     }
 }

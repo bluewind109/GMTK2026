@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private EnemyManager enemyManager;
 	[SerializeField] private TurnController turnController;
 	[SerializeField] private Player player;
+	[SerializeField] private Base playerBase;
 	[SerializeField] private TextMeshProUGUI levelText;
 	[SerializeField] private PopupEndGame popupEndGame;
 
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		turnController.Init();
 		numberOfLevels = levelConfig.GetNumberOfLevels();
+        AudioManager.Instance.PlayBgm();
 		StartLevel(levelIndex);
 	}
 
@@ -102,7 +104,7 @@ public class GameManager : MonoBehaviour
 			if (levelIndex >= numberOfLevels)
 			{
 				Debug.Log("All levels completed!");
-				EndGame(true);
+				_ = EndGame(true);
 				return;
 			}
 			StartLevel(levelIndex);
@@ -122,9 +124,10 @@ public class GameManager : MonoBehaviour
 		turnController.StartPlayerTurn();
 	}
 
-	public void EndGame(bool isWin)
+	public async UniTask EndGame(bool isWin)
 	{
 		currentPhase = GamePhase.End;
+		await playerBase.FadeOut();
 		popupEndGame.Show(isWin);
 	}
 

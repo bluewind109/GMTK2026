@@ -10,9 +10,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource audioSourcePrefab;
 
     [Header("Audio Clips")]
-    [SerializeField] private AudioClip playerAttackClip;
-    [SerializeField] private AudioClip enemyAttackClip;
+    [SerializeField] private AudioClip bgm;
+    [SerializeField] private AudioClip[] playerAttackClips;
+    [SerializeField] private AudioClip[] enemyDeathClips;
     [SerializeField] private AudioClip countdownClip;
+    [SerializeField] private AudioClip playerTurnClip;
+
+    private int playerAttackClipIndex = 0;
+    private int enemyDeathClipIndex = 0;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
 
@@ -45,6 +50,30 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayBgm()
+    {
+        if (bgm == null)
+        {
+            Debug.LogWarning("BGM clip is null. Cannot play background music.");
+            return;
+        }
+
+        if (musicAS != null)
+        {
+            musicAS.clip = bgm;
+            musicAS.loop = true;
+            musicAS.Play();
+        }
+    }
+
+    public void StopBgm()
+    {
+        if (musicAS != null && musicAS.isPlaying)
+        {
+            musicAS.Stop();
+        }
+    }
+
     private void PlaySfx(AudioClip clip)
     {
         if (clip == null)
@@ -66,7 +95,36 @@ public class AudioManager : MonoBehaviour
         return audioSources.Find(source => !source.isPlaying);
     }
 
-    public void PlayPlayerAttackSfx() => PlaySfx(playerAttackClip);
-    public void PlayEnemyAttackSfx() => PlaySfx(enemyAttackClip);
+    public void PlayPlayerAttackSfx()
+    {
+        if (playerAttackClips.Length == 0)
+        {
+            Debug.LogWarning("No player attack clips assigned.");
+            return;
+        }
+
+        AudioClip clip = playerAttackClips[playerAttackClipIndex];
+        PlaySfx(clip);
+
+        // Cycle through the clips for variety
+        playerAttackClipIndex = (playerAttackClipIndex + 1) % playerAttackClips.Length;
+    }
+
+    public void PlayEnemyDeathSfx()
+    {
+        if (enemyDeathClips.Length == 0)
+        {
+            Debug.LogWarning("No enemy death clips assigned.");
+            return;
+        }
+
+        AudioClip clip = enemyDeathClips[enemyDeathClipIndex];
+        PlaySfx(clip);
+
+        // Cycle through the clips for variety
+        enemyDeathClipIndex = (enemyDeathClipIndex + 1) % enemyDeathClips.Length;
+    }
+
     public void PlayCountdownSfx() => PlaySfx(countdownClip);
+    public void PlayPlayerTurnSfx() => PlaySfx(playerTurnClip);
 }

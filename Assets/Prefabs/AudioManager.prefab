@@ -47,8 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicAS: {fileID: 931602018002054031}
   audioSourcePrefab: {fileID: 737295832699130212, guid: 5bfb5c19aea9bd54cb20ba9230c0582d, type: 3}
-  playerAttackClip: {fileID: 0}
-  enemyAttackClip: {fileID: 0}
+  bgm: {fileID: 8300000, guid: 07b1a286681b1ad43abb8bb06b1f6675, type: 3}
+  playerAttackClips:
+  - {fileID: 8300000, guid: 4ecea6243cce190429f03a6b4b8fcaaa, type: 3}
+  - {fileID: 8300000, guid: 0dd81c253ee09784e8eb70dc2569fb65, type: 3}
+  enemyDeathClips:
+  - {fileID: 8300000, guid: 6e3bd77517a5a204e864e3794318ef4c, type: 3}
+  - {fileID: 8300000, guid: 6400178b8b92b5e46bcd563e64e70d2a, type: 3}
+  - {fileID: 8300000, guid: 957dc94d00fdcb444803534c4a5351cd, type: 3}
+  countdownClip: {fileID: 0}
+  playerTurnClip: {fileID: 8300000, guid: c549ecea5ad7a8f48a9c054c0c9e0dd4, type: 3}
 --- !u!1001 &492811824046340843
 PrefabInstance:
   m_ObjectHideFlags: 0

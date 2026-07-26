@@ -767,6 +767,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 933572115633740262, guid: 001fc19f259aa614388ddde3cdf11b68, type: 3}
   m_PrefabInstance: {fileID: 2454790350486230337}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1138724872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4422504359717853341, guid: 2ebe8a69421a3bc429dd44b846c3081b, type: 3}
+  m_PrefabInstance: {fileID: 3953320771653433423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e49686e8e198d4599254bb73e54068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Base
 --- !u!4 &1210220452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6186377817859897163, guid: 7a6d7744c077a784fafc5510856630ed, type: 3}
@@ -2594,6 +2605,10 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 1404145949}
+    - target: {fileID: 9046836955475512417, guid: 24ef87b628860244ba8f6ca8c0c2c7f1, type: 3}
+      propertyPath: playerBase
+      value: 
+      objectReference: {fileID: 1138724872}
     - target: {fileID: 9046836955475512417, guid: 24ef87b628860244ba8f6ca8c0c2c7f1, type: 3}
       propertyPath: enemyManager
       value: 

@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
             playerShadow.SetActive(true);
         }
 
+        AudioManager.Instance.PlayPlayerAttackSfx();
         eAttackType attackType = attackData.type;
         switch (attackType)
         {

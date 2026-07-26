@@ -58,6 +58,7 @@ public class TurnController : MonoBehaviour
         switch (currentTurn)
         {
             case Turn t when t == playerTurn:
+                AudioManager.Instance.PlayPlayerTurnSfx();
                 timerUI.TogglePlayerTurnFill(true);
                 timerUI.ToggleEnemyTurnFill(false);
                 onPlayerTurnStart?.Invoke();
