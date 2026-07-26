@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
 
         playerInput = GetComponentInChildren<PlayerInput>();
         playerInput.onAttackPressed += OnAttackPressed;
+        playerInput.onDirectionPressed += OnDirectionPressed;
 
         attackRange = GetComponentInChildren<AttackRange>();
         attackRange.gameObject.SetActive(false);
@@ -31,12 +33,14 @@ public class Player : MonoBehaviour
     void OnDestroy()
     {
         playerInput.onAttackPressed -= OnAttackPressed;
+        playerInput.onDirectionPressed -= OnDirectionPressed;
     }
 
     void Update()
     {
         globalAttackTimer.Update(Time.deltaTime);
-        playerInput.UpdateInput();
+        playerInput.UpdateDirectionInput();
+        playerInput.UpdateAttackInput();
     }
 
     private void OnAttackPressed(eAttackType attackType)
@@ -125,4 +129,32 @@ public class Player : MonoBehaviour
 
         return nearestEnemy;
     }
+
+    private void OnDirectionPressed(eDirection direction)
+    {
+        if (direction == eDirection.Left)
+        {
+            RotateLeft();
+        }
+        else if (direction == eDirection.Right)
+        {
+            RotateRight();
+        }
+    }
+
+    [Header("Rotation Settings")]
+    [SerializeField] private float rotationRate = 2.5f;
+	private void RotateRight()
+	{
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ - rotationRate * Time.deltaTime;
+		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+	}
+
+	private void RotateLeft()
+	{
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ + rotationRate * Time.deltaTime;
+		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+	}
 }

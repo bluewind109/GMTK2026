@@ -422,6 +422,7 @@ MonoBehaviour:
   startLocation: {fileID: 0}
   attackPoint: {fileID: 6943194678746382445}
   globalAttackCooldown: 0.1
+  rotationRate: 112.5
 --- !u!61 &5887785073466400958
 BoxCollider2D:
   m_ObjectHideFlags: 0
