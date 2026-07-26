@@ -140,7 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82347d87a12273545b6de42d51d5f9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  contactPoint: {fileID: 1697423120364611793}
+  contactPointPivot: {fileID: 1697423120364611793}
+  contactPoint: {fileID: 7869583715654616428}
 --- !u!1 &3477716536317844378
 GameObject:
   m_ObjectHideFlags: 0

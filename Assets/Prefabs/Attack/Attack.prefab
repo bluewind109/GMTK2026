@@ -149,6 +149,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 5592706062688727783, guid: 790c4b2ab4580544f86be715a78872a3, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592706062688727783, guid: 790c4b2ab4580544f86be715a78872a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.03644534
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592706062688727783, guid: 790c4b2ab4580544f86be715a78872a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.23572558
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592706062688727783, guid: 790c4b2ab4580544f86be715a78872a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8584906
+      objectReference: {fileID: 0}
     - target: {fileID: 6121628286986978850, guid: 790c4b2ab4580544f86be715a78872a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private Hitbox hitbox;
-    private float attackDuration = 5f;
+    private float attackDuration = 0.1f;
     private int damage = 1;
 
     private const string TAG = "Enemy";
@@ -26,11 +26,16 @@ public class Attack : MonoBehaviour
         hitbox.gameObject.SetActive(false);
     }
 
-    public void Initialize(Vector2 size, int damage, float duration)
+    public void Initialize(Vector2 size, int damage, Vector2 attackOffset)
     {
         this.damage = damage;
-        this.attackDuration = duration;
+        // this.attackDuration = duration;
         hitbox.SetArea(size);
+        hitbox.transform.localPosition = new Vector3(
+            hitbox.transform.localPosition.x + attackOffset.x, 
+            hitbox.transform.localPosition.y + attackOffset.y, 
+            0f
+        );
         _ = Execute();
     }
 

@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     public Action<Enemy> onDeath;
 
+    [SerializeField] private Transform contactPointPivot;
     [SerializeField] private Transform contactPoint;
 
     private Health health;
@@ -60,9 +61,10 @@ public class Enemy : MonoBehaviour
 
     public void MoveTowardsTarget(float speedMultiplier)
     {
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        transform.position += direction * baseMoveSpeed * speedMultiplier * Time.deltaTime;
-        contactPoint.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        Vector3 directionToTarget = (targetPosition - transform.position).normalized;
+        transform.position += directionToTarget * baseMoveSpeed * speedMultiplier * Time.deltaTime;
+        Vector3 directionToPlayer = (GameManager.Instance.GetPlayer().transform.position - transform.position).normalized;
+        contactPointPivot.transform.rotation = Quaternion.LookRotation(Vector3.forward, directionToPlayer);
     }
 
     private void Attack()
