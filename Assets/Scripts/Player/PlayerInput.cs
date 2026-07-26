@@ -60,44 +60,52 @@ public class PlayerInput : MonoBehaviour
     {
         if (!isDirectionInputEnabled) return;
 
+        bool leftDown  = Input.GetKeyDown(LOOK_LEFT);
+        bool rightDown = Input.GetKeyDown(LOOK_RIGHT);
+        bool upDown    = Input.GetKeyDown(LOOK_UP);
+        bool downDown  = Input.GetKeyDown(LOOK_DOWN);
 
-        if (GetKeyInput(LOOK_LEFT) && GetKeyInput(LOOK_UP))
+        bool leftHeld  = Input.GetKey(LOOK_LEFT);
+        bool rightHeld = Input.GetKey(LOOK_RIGHT);
+        bool upHeld    = Input.GetKey(LOOK_UP);
+        bool downHeld  = Input.GetKey(LOOK_DOWN);
+
+        // Diagonal: fires when one key is freshly pressed while the other is already held.
+        // This makes it reliable regardless of which key the player presses first.
+        if ((leftDown && upHeld) || (leftHeld && upDown))
         {
             onDirectionPressed?.Invoke(eDirection.TopLeft);
         }
-        else if (GetKeyInput(LOOK_LEFT) && GetKeyInput(LOOK_DOWN))
+        else if ((leftDown && downHeld) || (leftHeld && downDown))
         {
             onDirectionPressed?.Invoke(eDirection.BottomLeft);
         }
-        else if (GetKeyInput(LOOK_RIGHT) && GetKeyInput(LOOK_UP))
+        else if ((rightDown && upHeld) || (rightHeld && upDown))
         {
             onDirectionPressed?.Invoke(eDirection.TopRight);
         }
-        else if (GetKeyInput(LOOK_RIGHT) && GetKeyInput(LOOK_DOWN))
+        else if ((rightDown && downHeld) || (rightHeld && downDown))
         {
             onDirectionPressed?.Invoke(eDirection.BottomRight);
         }
-        else if (GetKeyInput(LOOK_LEFT))
+        // Cardinal: fires only when no perpendicular key is held, so that
+        // pressing a second key always upgrades a cardinal to a diagonal.
+        else if (leftDown && !upHeld && !downHeld)
         {
             onDirectionPressed?.Invoke(eDirection.Left);
         }
-        else if (GetKeyInput(LOOK_RIGHT))
+        else if (rightDown && !upHeld && !downHeld)
         {
             onDirectionPressed?.Invoke(eDirection.Right);
         }
-        else if (GetKeyInput(LOOK_UP))
+        else if (upDown && !leftHeld && !rightHeld)
         {
             onDirectionPressed?.Invoke(eDirection.Up);
         }
-        else if (GetKeyInput(LOOK_DOWN))
+        else if (downDown && !leftHeld && !rightHeld)
         {
             onDirectionPressed?.Invoke(eDirection.Down);
         }
-    }
-
-    private bool GetKeyInput(KeyCode key)
-    {
-        return Input.GetKeyDown(key);
     }
 }
 
