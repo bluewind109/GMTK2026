@@ -19,6 +19,11 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private SpawnLocation spawnLocation_Center;
     private List<SpawnLocation> spawnLocations = new List<SpawnLocation>();
 
+    public int GetActiveEnemyCount()
+    {
+        return activeEnemies.Count;
+    }
+
     void Awake()
     {
         spawnLocations = new List<SpawnLocation>

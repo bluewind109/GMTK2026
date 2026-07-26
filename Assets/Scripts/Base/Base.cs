@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
 public class Base : MonoBehaviour
 {
@@ -72,7 +74,7 @@ public class Base : MonoBehaviour
     {
         // Handle base death logic here
         gameObject.SetActive(false);
-        GameManager.Instance.EndGame(false);
+        _ = GameManager.Instance.EndGame(false);
     }
 
     private void TriggerDamageFlash()
@@ -102,5 +104,20 @@ public class Base : MonoBehaviour
 
         spriteRenderer.color = defaultSpriteColor;
         damageFlashRoutine = null;
+    }
+
+    public async UniTask FadeOut()
+    {
+        if (spriteRenderer == null)
+        {
+            Debug.LogError($"{nameof(Base)} on {name} cannot tween death animation because no {nameof(SpriteRenderer)} is assigned.", this);
+            return;
+        }
+
+        CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null) return;
+        canvasGroup.alpha = 1f;
+        canvasGroup.DOFade(0f, 1f).SetEase(Ease.InOutQuad);
+        await UniTask.Delay(1500);
     }
 }

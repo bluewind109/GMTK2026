@@ -103,6 +103,8 @@ public class Enemy : MonoBehaviour
         spriteRenderer.gameObject.SetActive(false);
         hurtbox.gameObject.SetActive(false);
         TriggerSlash();
+        AudioManager.Instance.PlayEnemyDeathSfx();
+        GameManager.Instance.DecreaseTotalEnemies();
         onDeath?.Invoke(this);
     }
 

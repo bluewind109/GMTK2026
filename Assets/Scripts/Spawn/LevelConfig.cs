@@ -21,6 +21,18 @@ public class LevelConfig : ScriptableObject
     {
         return levelInfos.Count;
     }
+
+    public int GetTotalEnemies()
+    {
+        int totalEnemies = 0;
+        foreach (var levelInfo in levelInfos)
+        {
+            totalEnemies += levelInfo.leftSpawn.spawnAmount;
+            totalEnemies += levelInfo.rightSpawn.spawnAmount;
+            totalEnemies += levelInfo.centerSpawn.spawnAmount;
+        }
+        return totalEnemies;
+    }
 }
 
 [Serializable]
