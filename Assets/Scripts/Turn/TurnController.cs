@@ -44,17 +44,14 @@ public class TurnController : MonoBehaviour
         enemyTurn.Reset();
         timerUI.UpdatePlayerTurnFill(playerTurn.TimePercent);
         timerUI.UpdateEnemyTurnFill(enemyTurn.TimePercent);
-        StartPlayerTurn();
     }
 
     private void SetTurn(Turn turn)
     {
-        if (turn == null) return;
-        if (currentTurn == turn) return;
+        // if (turn == null) return;
+        // if (currentTurn == turn) return;
 
-        currentTurn?.End();
         currentTurn = turn;
-
         switch (currentTurn)
         {
             case Turn t when t == playerTurn:
@@ -99,11 +96,12 @@ public class TurnController : MonoBehaviour
 
     private void OnPlayerTurnEnd()
     {
-        StartEnemyTurn();
+        onPlayerTurnEnd?.Invoke();
     }
 
     private void OnEnemyTurnEnd()
     {
+        onEnemyTurnEnd?.Invoke();
         Reset();
     }
 }

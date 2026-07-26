@@ -16,6 +16,11 @@ public class LevelConfig : ScriptableObject
         }
         return levelInfos[levelIndex];
     }
+
+    public int GetNumberOfLevels()
+    {
+        return levelInfos.Count;
+    }
 }
 
 [Serializable]
