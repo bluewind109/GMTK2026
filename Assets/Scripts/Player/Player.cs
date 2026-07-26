@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private AttackConfig attackConfig;
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform startLocation;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float globalAttackCooldown = 0.1f;
@@ -130,16 +131,64 @@ public class Player : MonoBehaviour
         return nearestEnemy;
     }
 
+    private const int LOOK_UP = 0;
+    private const int LOOK_TOP_RIGHT = 45;
+    private const int LOOK_RIGHT = 90;
+    private const int LOOK_BOTTOM_RIGHT = 135;
+    private const int LOOK_DOWN = 180;
+    private const int LOOK_BOTTOM_LEFT = 225;
+    private const int LOOK_LEFT = 270;
+    private const int LOOK_TOP_LEFT = 315;
+    private eDirection lastDirection = eDirection.Up;
+    private string idlePrefix = "idle_";
+    private string lastIdleAnimation;
+    private int lastAngle = 45;
     private void OnDirectionPressed(eDirection direction)
     {
-        if (direction == eDirection.Left)
+        if (string.IsNullOrEmpty(lastIdleAnimation))
         {
-            RotateLeft();
+            lastIdleAnimation = idlePrefix + LOOK_UP;
+            lastAngle = LOOK_UP;
         }
-        else if (direction == eDirection.Right)
+        string animationName = idlePrefix + LOOK_UP;
+        int angle = LOOK_UP;
+
+        switch (direction)
         {
-            RotateRight();
+            case eDirection.Left:
+                angle = LOOK_LEFT;
+                break;
+            case eDirection.Right:
+                angle = LOOK_RIGHT;
+                break;
+            case eDirection.Up:
+                angle = LOOK_UP;
+                break;
+            case eDirection.Down:
+                angle = LOOK_DOWN;
+                break;
+            case eDirection.TopLeft:
+                angle = LOOK_TOP_LEFT;
+                break;
+            case eDirection.TopRight:
+                angle = LOOK_TOP_RIGHT;
+                break;
+            case eDirection.BottomLeft:
+                angle = LOOK_BOTTOM_LEFT;
+                break;
+            case eDirection.BottomRight:
+                angle = LOOK_BOTTOM_RIGHT;
+                break;
+            default:
+                // Debug.LogWarning($"Unhandled direction input: {direction}");
+                break;
         }
+        lastDirection = direction;
+        lastIdleAnimation = animationName;
+        lastAngle = angle;
+        animationName = idlePrefix + angle;
+        Debug.Log($"Direction pressed: {direction}, angle: {angle}, animation: {animationName}");
+        animator.Play(animationName);
     }
 
     public void OnTurnStart()
@@ -150,23 +199,45 @@ public class Player : MonoBehaviour
 
     public void OnTurnEnd()
     {
-        playerInput.EnableDirectionInput(false);
+        // playerInput.EnableDirectionInput(false);
         playerInput.EnableAttackInput(false);
+        ResetPosition();
+    }
+
+    private void ResetPosition()
+    {
+        transform.position = startLocation.position;
+        transform.rotation = startLocation.rotation;
     }
 
     [Header("Rotation Settings")]
-    [SerializeField] private float rotationRate = 2.5f;
-	private void RotateRight()
-	{
+    [SerializeField] private float rotationRateHorizontal = 45f;
+    [SerializeField] private float rotationRateVertical = 180f;
+    private void RotateRight()
+    {
         float currentRotationZ = transform.eulerAngles.z;
-        float targetRotationZ = currentRotationZ - rotationRate * Time.deltaTime;
-		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
-	}
+        float targetRotationZ = currentRotationZ - rotationRateHorizontal;
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
 
-	private void RotateLeft()
-	{
+    private void RotateLeft()
+    {
         float currentRotationZ = transform.eulerAngles.z;
-        float targetRotationZ = currentRotationZ + rotationRate * Time.deltaTime;
-		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
-	}
+        float targetRotationZ = currentRotationZ + rotationRateHorizontal;
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
+
+    private void LookUp()
+    {
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ + rotationRateVertical;
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
+
+    private void LookDown()
+    {
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ - rotationRateVertical;
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
 }

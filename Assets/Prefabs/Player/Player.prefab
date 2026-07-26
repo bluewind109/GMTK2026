@@ -221,7 +221,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1293641009
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 164d460858da8774fbc7ba702e299873, type: 3}
@@ -244,6 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3187622979560058942}
   - component: {fileID: 2067924410388288668}
+  - component: {fileID: 3107920608755099258}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -260,9 +261,9 @@ Transform:
   m_GameObject: {fileID: 3923931631558182308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6356275613924419427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -312,19 +313,41 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1293641009
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: dd076ba7befbd45448de4ec2d31aafdd, type: 3}
-  m_Color: {r: 0.077162705, g: 0.17114781, b: 0.9622642, a: 1}
+  m_Sprite: {fileID: -7863787951372912187, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.49, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &3107920608755099258
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923931631558182308}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d2ebd1b36bc51e44a9c12cfec2c9c1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4559272073994381703
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +421,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8205429747545273601}
   - {fileID: 3187622979560058942}
@@ -419,10 +442,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   attackConfig: {fileID: 11400000, guid: e7e20fca149044846aacfb9c35f7fa4d, type: 2}
+  animator: {fileID: 3107920608755099258}
   startLocation: {fileID: 0}
   attackPoint: {fileID: 6943194678746382445}
   globalAttackCooldown: 0.1
-  rotationRate: 112.5
+  rotationRateHorizontal: 45
+  rotationRateVertical: 180
 --- !u!61 &5887785073466400958
 BoxCollider2D:
   m_ObjectHideFlags: 0

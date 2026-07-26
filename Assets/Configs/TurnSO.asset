@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac850ead883e3647bca9f5f2541bc53, type: 3}
   m_Name: TurnSO
   m_EditorClassIdentifier: Assembly-CSharp::TurnSO
-  duration: 10
+  duration: 5
   playerDuration: 5
