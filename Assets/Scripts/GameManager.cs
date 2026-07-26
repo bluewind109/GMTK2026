@@ -1,4 +1,6 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +11,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private EnemyManager enemyManager;
 	[SerializeField] private TurnController turnController;
 	[SerializeField] private Player player;
+	[SerializeField] private TextMeshProUGUI levelText;
 
 	private int levelIndex = 0;
 	private int numberOfTurns = 1;
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour
 		enemyManager.StartLevel(levelInfo);
 		turnController.StartEnemyTurn();
 		currentPhase = GamePhase.Gameplay;
+		ShowLevelText($"Level {index + 1}", 2f).Forget();
 	}
 
 	void Update()
@@ -96,7 +100,7 @@ public class GameManager : MonoBehaviour
 			if (levelIndex >= numberOfLevels)
 			{
 				Debug.Log("All levels completed!");
-				currentPhase = GamePhase.End;
+				EndGame(true);
 				return;
 			}
 			StartLevel(levelIndex);
@@ -114,6 +118,19 @@ public class GameManager : MonoBehaviour
 	private void OnEnemyTurnEnd()
 	{
 		turnController.StartPlayerTurn();
+	}
+
+	public void EndGame(bool isWin)
+	{
+		currentPhase = GamePhase.End;
+	}
+
+	private async UniTask ShowLevelText(string text, float duration)
+	{
+		levelText.text = text;
+		levelText.gameObject.SetActive(true);
+		await UniTask.Delay(System.TimeSpan.FromSeconds(duration));
+		levelText.gameObject.SetActive(false);
 	}
 }
 
