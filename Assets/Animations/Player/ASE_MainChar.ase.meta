@@ -16,8 +16,28 @@ ScriptedImporter:
   - first:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
+      name: attack_idle_315
+    second: {fileID: 7400000, guid: e67d7fdaec9ff4c4dae9e7d890c29b16, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: attack_idle_45
+    second: {fileID: 7400000, guid: 39879fff8b83185408769f3017d57a6a, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
       name: basic_attack_0
     second: {fileID: 7400000, guid: 7a469a7a1602a0c418a82de5f5c2d0c2, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: basic_attack_315
+    second: {fileID: 7400000, guid: 889dd69288913464eb71b589bd41d746, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: basic_attack_45
+    second: {fileID: 7400000, guid: 6d6d5f1300768bc418c7e83eab651c75, type: 2}
   - first:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
@@ -26,8 +46,28 @@ ScriptedImporter:
   - first:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
+      name: dash_attack_315
+    second: {fileID: 7400000, guid: ff6155fdc359bc14b89d184f75876d44, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: dash_attack_45
+    second: {fileID: 7400000, guid: a78b8b20714c43b44a412e72f827efdb, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
       name: drill_attack_0
     second: {fileID: 7400000, guid: 2ca5245ff3e382d4d8c8dfa9e500b74c, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: drill_attack_315
+    second: {fileID: 7400000, guid: 8e4a344d4fdc0584d99f2b1502f32c8a, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: drill_attack_45
+    second: {fileID: 7400000, guid: ac7359bb746653c4db095f0daa45a50d, type: 2}
   - first:
       type: UnityEngine:AnimationClip
       assembly: UnityEngine.AnimationModule
@@ -68,6 +108,16 @@ ScriptedImporter:
       assembly: UnityEngine.AnimationModule
       name: swipe_attack_0
     second: {fileID: 7400000, guid: e0cf62999907c4d49883df731faf7811, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: swipe_attack_315
+    second: {fileID: 7400000, guid: 8f1ee9961382a7048be350683e9acd26, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: swipe_attack_45
+    second: {fileID: 7400000, guid: 3ac5a918d0d771f40a52f17abe0229a3, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -167,7 +217,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639206647926682257
+  platformSettingsDirtyTick: 639206677325830833
   textureAssetName: 
   singleSpriteImportData:
   - name: 

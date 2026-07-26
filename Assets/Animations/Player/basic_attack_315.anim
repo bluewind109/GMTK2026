@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: swipe_attack_0
+  m_Name: basic_attack_315
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,19 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -5391083566407872367, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
-    - time: 0.10000038
-      value: {fileID: -1977872280686596054, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
-    - time: 0.20000029
-      value: {fileID: -4403172495649578803, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
-    - time: 0.3000002
-      value: {fileID: 4752665976137412135, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+      value: {fileID: -4826272640428339327, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+    - time: 0.10000014
+      value: {fileID: -1192375289575503514, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+    - time: 0.20000005
+      value: {fileID: 2094130256061700540, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+    - time: 0.29999995
+      value: {fileID: 3840791152233067615, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
     - time: 0.4000001
-      value: {fileID: -3033673295873271446, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+      value: {fileID: -1952437883243842370, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
     - time: 0.5
-      value: {fileID: -6957629678945505601, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+      value: {fileID: 3510203656647170670, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
     - time: 0.59000003
-      value: {fileID: -6957629678945505601, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
+      value: {fileID: 3510203656647170670, guid: f8e0251fc6eb24f43beb14d28622cba4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212

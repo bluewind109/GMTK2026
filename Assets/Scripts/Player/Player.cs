@@ -131,78 +131,63 @@ public class Player : MonoBehaviour
         return nearestEnemy;
     }
 
-    private const string LOOK_TOP_RIGHT = "_45";
-    private const string LOOK_BOTTOM_RIGHT = "_135";
-    private const string LOOK_BOTTOM_LEFT = "_225";
-    private const string LOOK_TOP_LEFT = "_315";
-    private eDirection lastDirection = eDirection.TopRight;
-    private string lastIdleAnimation = "idle" + LOOK_TOP_RIGHT;
+    private const int LOOK_UP = 0;
+    private const int LOOK_TOP_RIGHT = 45;
+    private const int LOOK_RIGHT = 90;
+    private const int LOOK_BOTTOM_RIGHT = 135;
+    private const int LOOK_DOWN = 180;
+    private const int LOOK_BOTTOM_LEFT = 225;
+    private const int LOOK_LEFT = 270;
+    private const int LOOK_TOP_LEFT = 315;
+    private eDirection lastDirection = eDirection.Up;
+    private string idlePrefix = "idle_";
+    private string lastIdleAnimation;
+    private int lastAngle = 45;
     private void OnDirectionPressed(eDirection direction)
     {
-        string idlePrefix = "idle";
-        string animationName = idlePrefix + LOOK_TOP_RIGHT;
+        if (string.IsNullOrEmpty(lastIdleAnimation))
+        {
+            lastIdleAnimation = idlePrefix + LOOK_UP;
+            lastAngle = LOOK_UP;
+        }
+        string animationName = idlePrefix + LOOK_UP;
+        int angle = LOOK_UP;
 
         switch (direction)
         {
             case eDirection.Left:
-                if (lastIdleAnimation == idlePrefix + LOOK_TOP_RIGHT)
-                {
-                    animationName = idlePrefix + LOOK_TOP_LEFT;
-                }
-                else if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_RIGHT)
-                {
-                    animationName = idlePrefix + LOOK_BOTTOM_LEFT;
-                }
+                angle = LOOK_LEFT;
                 break;
             case eDirection.Right:
-                if (lastIdleAnimation == idlePrefix + LOOK_TOP_LEFT)
-                {
-                    animationName = idlePrefix + LOOK_TOP_RIGHT;
-                }
-                else if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_LEFT)
-                {
-                    animationName = idlePrefix + LOOK_BOTTOM_RIGHT;
-                }
+                angle = LOOK_RIGHT;
                 break;
             case eDirection.Up:
-                if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_LEFT)
-                {
-                    animationName = idlePrefix + LOOK_TOP_LEFT;
-                }
-                else if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_RIGHT)
-                {
-                    animationName = idlePrefix + LOOK_TOP_RIGHT;
-                }
+                angle = LOOK_UP;
                 break;
             case eDirection.Down:
-                if (lastIdleAnimation == idlePrefix + LOOK_TOP_LEFT)
-                {
-                    animationName = idlePrefix + LOOK_BOTTOM_LEFT;
-                }
-                else if (lastIdleAnimation == idlePrefix + LOOK_TOP_RIGHT)
-                {
-                    animationName = idlePrefix + LOOK_BOTTOM_RIGHT;
-                }
+                angle = LOOK_DOWN;
                 break;
             case eDirection.TopLeft:
-                animationName = idlePrefix + LOOK_TOP_LEFT;
+                angle = LOOK_TOP_LEFT;
                 break;
             case eDirection.TopRight:
-                animationName = idlePrefix + LOOK_TOP_RIGHT;
+                angle = LOOK_TOP_RIGHT;
                 break;
             case eDirection.BottomLeft:
-                animationName = idlePrefix + LOOK_BOTTOM_LEFT;
+                angle = LOOK_BOTTOM_LEFT;
                 break;
             case eDirection.BottomRight:
-                animationName = idlePrefix + LOOK_BOTTOM_RIGHT;
+                angle = LOOK_BOTTOM_RIGHT;
                 break;
             default:
-                Debug.LogWarning($"Unhandled direction input: {direction}");
+                // Debug.LogWarning($"Unhandled direction input: {direction}");
                 break;
         }
-        Debug.Log($"Player pressed direction: {direction}, lastDirection: {lastDirection}");
         lastDirection = direction;
         lastIdleAnimation = animationName;
+        lastAngle = angle;
+        animationName = idlePrefix + angle;
+        Debug.Log($"Direction pressed: {direction}, angle: {angle}, animation: {animationName}");
         animator.Play(animationName);
     }
 
