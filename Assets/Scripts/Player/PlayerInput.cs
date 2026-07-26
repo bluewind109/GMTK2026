@@ -5,8 +5,8 @@ public class PlayerInput : MonoBehaviour
     public System.Action<eDirection> onDirectionPressed;
     public System.Action<eAttackType> onAttackPressed;
 
-    private const KeyCode ROTATE_LEFT = KeyCode.A;
-    private const KeyCode ROTATE_RIGHT = KeyCode.D;
+    private const KeyCode LOOK_LEFT = KeyCode.A;
+    private const KeyCode LOOK_RIGHT = KeyCode.D;
     private const KeyCode LOOK_UP = KeyCode.W;
     private const KeyCode LOOK_DOWN = KeyCode.S;
 
@@ -60,19 +60,36 @@ public class PlayerInput : MonoBehaviour
     {
         if (!isDirectionInputEnabled) return;
 
-        if (Input.GetKeyDown(ROTATE_LEFT))
+
+        if (Input.GetKey(LOOK_LEFT) && Input.GetKey(LOOK_UP))
+        {
+            onDirectionPressed?.Invoke(eDirection.TopLeft);
+        }
+        else if (Input.GetKey(LOOK_LEFT) && Input.GetKey(LOOK_DOWN))
+        {
+            onDirectionPressed?.Invoke(eDirection.BottomLeft);
+        }
+        else if (Input.GetKey(LOOK_RIGHT) && Input.GetKey(LOOK_UP))
+        {
+            onDirectionPressed?.Invoke(eDirection.TopRight);
+        }
+        else if (Input.GetKey(LOOK_RIGHT) && Input.GetKey(LOOK_DOWN))
+        {
+            onDirectionPressed?.Invoke(eDirection.BottomRight);
+        }
+        else if (Input.GetKey(LOOK_LEFT))
         {
             onDirectionPressed?.Invoke(eDirection.Left);
         }
-        else if (Input.GetKeyDown(ROTATE_RIGHT))
+        else if (Input.GetKey(LOOK_RIGHT))
         {
             onDirectionPressed?.Invoke(eDirection.Right);
         }
-        else if (Input.GetKeyDown(LOOK_UP))
+        else if (Input.GetKey(LOOK_UP))
         {
             onDirectionPressed?.Invoke(eDirection.Up);
         }
-        else if (Input.GetKeyDown(LOOK_DOWN))
+        else if (Input.GetKey(LOOK_DOWN))
         {
             onDirectionPressed?.Invoke(eDirection.Down);
         }
@@ -82,7 +99,11 @@ public class PlayerInput : MonoBehaviour
 public enum eDirection
 {
     Left,
+    TopLeft,
+    BottomLeft,
     Right,
+    TopRight,
+    BottomRight,
     Up,
     Down
 }

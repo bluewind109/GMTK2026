@@ -132,21 +132,35 @@ public class Player : MonoBehaviour
 
     private void OnDirectionPressed(eDirection direction)
     {
-        if (direction == eDirection.Left)
+        switch (direction)
         {
-            RotateLeft();
-        }
-        else if (direction == eDirection.Right)
-        {
-            RotateRight();
-        }
-        else if (direction == eDirection.Up)
-        {
-            LookUp();
-        }
-        else if (direction == eDirection.Down)
-        {
-            LookDown();
+            case eDirection.Left:
+                transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                break;
+            case eDirection.Right:
+                transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+                break;
+            case eDirection.Up:
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                break;
+            case eDirection.Down:
+                transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                break;
+            case eDirection.TopLeft:
+                transform.rotation = Quaternion.Euler(0f, 0f, 45f);
+                break;
+            case eDirection.TopRight:
+                transform.rotation = Quaternion.Euler(0f, 0f, -45f);
+                break;
+            case eDirection.BottomLeft:
+                transform.rotation = Quaternion.Euler(0f, 0f, 135f);
+                break;
+            case eDirection.BottomRight:
+                transform.rotation = Quaternion.Euler(0f, 0f, -135f);
+                break;
+            default:
+                Debug.LogWarning($"Unhandled direction input: {direction}");
+                break;
         }
     }
 
