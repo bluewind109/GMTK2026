@@ -2,7 +2,122 @@ fileFormatVersion: 2
 guid: f8e0251fc6eb24f43beb14d28622cba4
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle_0
+    second: {fileID: 7400000, guid: dc296d15381b61e449cd873a78ce6ab0, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: attack_idle_0
+    second: {fileID: 7400000, guid: 6199981c6503ee74abc1dd1b3c3d8707, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: attack_idle_315
+    second: {fileID: 7400000, guid: e67d7fdaec9ff4c4dae9e7d890c29b16, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: attack_idle_45
+    second: {fileID: 7400000, guid: 39879fff8b83185408769f3017d57a6a, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: basic_attack_0
+    second: {fileID: 7400000, guid: 7a469a7a1602a0c418a82de5f5c2d0c2, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: basic_attack_315
+    second: {fileID: 7400000, guid: 889dd69288913464eb71b589bd41d746, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: basic_attack_45
+    second: {fileID: 7400000, guid: 6d6d5f1300768bc418c7e83eab651c75, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: dash_attack_0
+    second: {fileID: 7400000, guid: f1125cbd614af9d4cb658639c09b7f92, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: dash_attack_315
+    second: {fileID: 7400000, guid: ff6155fdc359bc14b89d184f75876d44, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: dash_attack_45
+    second: {fileID: 7400000, guid: a78b8b20714c43b44a412e72f827efdb, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: drill_attack_0
+    second: {fileID: 7400000, guid: 2ca5245ff3e382d4d8c8dfa9e500b74c, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: drill_attack_315
+    second: {fileID: 7400000, guid: 8e4a344d4fdc0584d99f2b1502f32c8a, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: drill_attack_45
+    second: {fileID: 7400000, guid: ac7359bb746653c4db095f0daa45a50d, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: idle_135
+    second: {fileID: 7400000, guid: c38b87a08e0141d41a2d902a1f8fba13, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: idle_180
+    second: {fileID: 7400000, guid: a81fc7993cb520d41a2ad5b7a854633f, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: idle_225
+    second: {fileID: 7400000, guid: e73a93a32575cf64aa1ced0b377f537e, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: idle_270
+    second: {fileID: 7400000, guid: 0398473138453d3419ef3559decf9739, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: idle_315
+    second: {fileID: 7400000, guid: 5683b3a5b06bf9844977ebbd6c651ca2, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: idle_45
+    second: {fileID: 7400000, guid: bc3f8205071f00841abb0d9a85296dc8, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: idle_90
+    second: {fileID: 7400000, guid: 8c0c5bafe91ec5547b47485cddb3e8d2, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: swipe_attack_0
+    second: {fileID: 7400000, guid: e0cf62999907c4d49883df731faf7811, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: swipe_attack_315
+    second: {fileID: 7400000, guid: 8f1ee9961382a7048be350683e9acd26, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: swipe_attack_45
+    second: {fileID: 7400000, guid: 3ac5a918d0d771f40a52f17abe0229a3, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -102,7 +217,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 639206677325830833
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -5427,7 +5542,43 @@ ScriptedImporter:
     tileSetIndex: 0
     parentIndex: -1
   tileSets: []
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 

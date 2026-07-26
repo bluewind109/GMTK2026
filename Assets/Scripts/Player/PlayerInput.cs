@@ -5,8 +5,10 @@ public class PlayerInput : MonoBehaviour
     public System.Action<eDirection> onDirectionPressed;
     public System.Action<eAttackType> onAttackPressed;
 
-    private const KeyCode ROTATE_LEFT = KeyCode.A;
-    private const KeyCode ROTATE_RIGHT = KeyCode.D;
+    private const KeyCode LOOK_LEFT = KeyCode.A;
+    private const KeyCode LOOK_RIGHT = KeyCode.D;
+    private const KeyCode LOOK_UP = KeyCode.W;
+    private const KeyCode LOOK_DOWN = KeyCode.S;
 
     private const KeyCode STANDING_ATTACK = KeyCode.J;
     private const KeyCode DASH_ATTACK = KeyCode.K;
@@ -15,6 +17,12 @@ public class PlayerInput : MonoBehaviour
 
     private bool isDirectionInputEnabled = false;
     private bool isAttackInputEnabled = false;
+
+    void Start()
+    {
+        EnableDirectionInput(true);
+        EnableAttackInput(false);
+    }
 
     public void EnableDirectionInput(bool enable)
     {
@@ -52,13 +60,51 @@ public class PlayerInput : MonoBehaviour
     {
         if (!isDirectionInputEnabled) return;
 
-        if (Input.GetKey(ROTATE_LEFT))
+        bool leftDown  = Input.GetKeyDown(LOOK_LEFT);
+        bool rightDown = Input.GetKeyDown(LOOK_RIGHT);
+        bool upDown    = Input.GetKeyDown(LOOK_UP);
+        bool downDown  = Input.GetKeyDown(LOOK_DOWN);
+
+        bool leftHeld  = Input.GetKey(LOOK_LEFT);
+        bool rightHeld = Input.GetKey(LOOK_RIGHT);
+        bool upHeld    = Input.GetKey(LOOK_UP);
+        bool downHeld  = Input.GetKey(LOOK_DOWN);
+
+        // Diagonal: fires when one key is freshly pressed while the other is already held.
+        // This makes it reliable regardless of which key the player presses first.
+        if ((leftDown && upHeld) || (leftHeld && upDown))
+        {
+            onDirectionPressed?.Invoke(eDirection.UpLeft);
+        }
+        else if ((leftDown && downHeld) || (leftHeld && downDown))
+        {
+            onDirectionPressed?.Invoke(eDirection.DownLeft);
+        }
+        else if ((rightDown && upHeld) || (rightHeld && upDown))
+        {
+            onDirectionPressed?.Invoke(eDirection.UpRight);
+        }
+        else if ((rightDown && downHeld) || (rightHeld && downDown))
+        {
+            onDirectionPressed?.Invoke(eDirection.DownRight);
+        }
+        // Cardinal: fires only when no perpendicular key is held, so that
+        // pressing a second key always upgrades a cardinal to a diagonal.
+        else if (leftDown && !upHeld && !downHeld)
         {
             onDirectionPressed?.Invoke(eDirection.Left);
         }
-        else if (Input.GetKey(ROTATE_RIGHT))
+        else if (rightDown && !upHeld && !downHeld)
         {
             onDirectionPressed?.Invoke(eDirection.Right);
+        }
+        else if (upDown && !leftHeld && !rightHeld)
+        {
+            onDirectionPressed?.Invoke(eDirection.Up);
+        }
+        else if (downDown && !leftHeld && !rightHeld)
+        {
+            onDirectionPressed?.Invoke(eDirection.Down);
         }
     }
 }
@@ -66,5 +112,11 @@ public class PlayerInput : MonoBehaviour
 public enum eDirection
 {
     Left,
-    Right
+    UpLeft,
+    DownLeft,
+    Right,
+    UpRight,
+    DownRight,
+    Up,
+    Down
 }

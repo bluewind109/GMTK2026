@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Cysharp.Threading.Tasks;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -53,14 +54,21 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnEnemy(EnemyType enemyType, Vector3 spawnPosition)
     {
+        _ = SpawnEnemyAsync(enemyType, spawnPosition);
+    }
+
+    private async UniTask SpawnEnemyAsync(EnemyType enemyType, Vector3 spawnPosition)
+    {
         EnemyInfo enemyInfo = enemyConfig.GetEnemyInfo(enemyType);
         Enemy instance = Instantiate(
-            enemyInfo.enemyPrefab, 
-            spawnPosition, 
+            enemyInfo.enemyPrefab,
+            spawnPosition,
             Quaternion.identity,
             enemiesContainer
         );
-        instance.Initialize(enemyInfo, spawnPosition, targetPosition.position);
+
+        await UniTask.WaitForEndOfFrame(this); // Wait for one frame to ensure all components are initialized
+        instance.Initialize(enemyInfo, targetPosition.position);
         instance.onDeath += OnEnemyDeath;
         activeEnemies.Add(instance);
     }
@@ -88,6 +96,6 @@ public class EnemyManager : MonoBehaviour
     {
         activeEnemies.Remove(enemy);
         enemy.onDeath -= OnEnemyDeath;
-        Destroy(enemy.gameObject);
+        Destroy(enemy.gameObject, 1f);
     }
 }
