@@ -58,7 +58,8 @@ public class Player : MonoBehaviour
         }
 
         // If no nearest enemy, move forward by blank range and execute attack
-        transform.position += transform.forward * attackData.GetBlankRange();
+        Vector3 blankDirection = (attackPoint.position - transform.position).normalized;
+        transform.position += blankDirection * attackData.GetBlankRange();
         attackRange.SetRange(attackData.GetBlankRange());
         attackRange.gameObject.SetActive(true);
         ExecuteAttack(attackData);
