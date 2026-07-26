@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
 
     private const KeyCode ROTATE_LEFT = KeyCode.A;
     private const KeyCode ROTATE_RIGHT = KeyCode.D;
+    private const KeyCode LOOK_UP = KeyCode.W;
+    private const KeyCode LOOK_DOWN = KeyCode.S;
 
     private const KeyCode STANDING_ATTACK = KeyCode.J;
     private const KeyCode DASH_ATTACK = KeyCode.K;
@@ -15,6 +17,12 @@ public class PlayerInput : MonoBehaviour
 
     private bool isDirectionInputEnabled = false;
     private bool isAttackInputEnabled = false;
+
+    void Start()
+    {
+        EnableDirectionInput(true);
+        EnableAttackInput(false);
+    }
 
     public void EnableDirectionInput(bool enable)
     {
@@ -52,13 +60,21 @@ public class PlayerInput : MonoBehaviour
     {
         if (!isDirectionInputEnabled) return;
 
-        if (Input.GetKey(ROTATE_LEFT))
+        if (Input.GetKeyDown(ROTATE_LEFT))
         {
             onDirectionPressed?.Invoke(eDirection.Left);
         }
-        else if (Input.GetKey(ROTATE_RIGHT))
+        else if (Input.GetKeyDown(ROTATE_RIGHT))
         {
             onDirectionPressed?.Invoke(eDirection.Right);
+        }
+        else if (Input.GetKeyDown(LOOK_UP))
+        {
+            onDirectionPressed?.Invoke(eDirection.Up);
+        }
+        else if (Input.GetKeyDown(LOOK_DOWN))
+        {
+            onDirectionPressed?.Invoke(eDirection.Down);
         }
     }
 }
@@ -66,5 +82,7 @@ public class PlayerInput : MonoBehaviour
 public enum eDirection
 {
     Left,
-    Right
+    Right,
+    Up,
+    Down
 }

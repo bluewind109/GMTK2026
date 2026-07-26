@@ -140,6 +140,14 @@ public class Player : MonoBehaviour
         {
             RotateRight();
         }
+        else if (direction == eDirection.Up)
+        {
+            LookUp();
+        }
+        else if (direction == eDirection.Down)
+        {
+            LookDown();
+        }
     }
 
     public void OnTurnStart()
@@ -150,23 +158,38 @@ public class Player : MonoBehaviour
 
     public void OnTurnEnd()
     {
-        playerInput.EnableDirectionInput(false);
+        // playerInput.EnableDirectionInput(false);
         playerInput.EnableAttackInput(false);
     }
 
     [Header("Rotation Settings")]
-    [SerializeField] private float rotationRate = 2.5f;
+    [SerializeField] private float rotationRateHorizontal = 45f;
+    [SerializeField] private float rotationRateVertical = 180f;
 	private void RotateRight()
 	{
         float currentRotationZ = transform.eulerAngles.z;
-        float targetRotationZ = currentRotationZ - rotationRate * Time.deltaTime;
+        float targetRotationZ = currentRotationZ - rotationRateHorizontal;
 		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
 	}
 
 	private void RotateLeft()
 	{
         float currentRotationZ = transform.eulerAngles.z;
-        float targetRotationZ = currentRotationZ + rotationRate * Time.deltaTime;
+        float targetRotationZ = currentRotationZ + rotationRateHorizontal;
 		transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
 	}
+
+    private void LookUp()
+    {
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ + rotationRateVertical;
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
+
+    private void LookDown()
+    {
+        float currentRotationZ = transform.eulerAngles.z;
+        float targetRotationZ = currentRotationZ - rotationRateVertical;
+        transform.rotation = Quaternion.Euler(0f, 0f, targetRotationZ);
+    }
 }
