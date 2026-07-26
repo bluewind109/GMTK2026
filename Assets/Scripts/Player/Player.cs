@@ -263,14 +263,14 @@ public class Player : MonoBehaviour
 
     public void OnTurnStart()
     {
-        playerInput.EnableDirectionInput(true);
-        playerInput.EnableAttackInput(true);
+        playerInput?.EnableDirectionInput(true);
+        playerInput?.EnableAttackInput(true);
     }
 
     public void OnTurnEnd()
     {
-        // playerInput.EnableDirectionInput(false);
-        playerInput.EnableAttackInput(false);
+        // playerInput?.EnableDirectionInput(false);
+        playerInput?.EnableAttackInput(false);
         ResetPosition();
     }
 

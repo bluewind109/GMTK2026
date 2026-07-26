@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -37,9 +38,10 @@ public class GameManager : MonoBehaviour
 		turnController.onEnemyTurnStart -= OnEnemyTurnStart;
 	}
 
-	void Start()
+	IEnumerator Start()
 	{
 		// currentPhase = GamePhase.Start;
+		yield return new WaitForSeconds(1f);
 		turnController.Init();
 		turnController.StartEnemyTurn();
 		enemyManager.Test_StartLevel1();
