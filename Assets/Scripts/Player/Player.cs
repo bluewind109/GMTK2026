@@ -93,7 +93,8 @@ public class Player : MonoBehaviour
             attackRange.gameObject.SetActive(true);
 
             Vector3 directionToEnemy = (nearestEnemy.transform.position - attackPointPivot.transform.position).normalized;
-            int nearestAngle = FindNearestAngle(Mathf.RoundToInt(Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg));
+            float angleToEnemy = Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg;
+            int nearestAngle = FindNearestAngle(angleToEnemy);
             eDirection nearestDirection = MapAngleToDirection(nearestAngle);
             TurnAttackPointAt(nearestDirection);
             SnapToNearestEnemy(nearestEnemy);
@@ -255,14 +256,22 @@ public class Player : MonoBehaviour
         animator.Play(animationName);
     }
 
-    private int FindNearestAngle(int targetAngle)
+    private int FindNearestAngle(float targetAngle)
     {
+        // Convert Atan2 angle (0 = right, 90 = up) to this project's pivot convention
+        // (0 = up, -90 = right, -180 = down, -270 = left).
+        float normalizedTargetAngle = targetAngle - 90f;
+        if (normalizedTargetAngle > 0f)
+        {
+            normalizedTargetAngle -= 360f;
+        }
+
         int nearestAngle = viableAngles[0];
-        int smallestDifference = Mathf.Abs(targetAngle - nearestAngle);
+        float smallestDifference = Mathf.Abs(Mathf.DeltaAngle(normalizedTargetAngle, nearestAngle));
 
         foreach (int angle in viableAngles)
         {
-            int difference = Mathf.Abs(targetAngle - angle);
+            float difference = Mathf.Abs(Mathf.DeltaAngle(normalizedTargetAngle, angle));
             if (difference < smallestDifference)
             {
                 smallestDifference = difference;
@@ -282,7 +291,7 @@ public class Player : MonoBehaviour
     public void OnTurnEnd()
     {
         // playerInput?.EnableDirectionInput(false);
-        playerInput?.EnableAttackInput(false);
+        playerInput?.EnableAttackInput(true);
         ResetPosition();
         playerShadow.SetActive(false);
         isFirstAttackExecuted = false;
