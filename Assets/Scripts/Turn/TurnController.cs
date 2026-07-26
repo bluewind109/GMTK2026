@@ -58,6 +58,7 @@ public class TurnController : MonoBehaviour
         switch (currentTurn)
         {
             case Turn t when t == playerTurn:
+                AudioManager.Instance.PlayPlayerTurnSfx();
                 timerUI.TogglePlayerTurnFill(true);
                 timerUI.ToggleEnemyTurnFill(false);
                 onPlayerTurnStart?.Invoke();
@@ -107,9 +108,16 @@ public class TurnController : MonoBehaviour
         if (secondsRemaining != currentCountdown)
         {
             currentCountdown = secondsRemaining;
+            if (currentCountdown == 0)
+            {
+                AudioManager.Instance.PlayZeroCountdownSfx();
+            }
+            else if (currentCountdown <= 3)
+            {
+                AudioManager.Instance.PlayThreeTwoOneCountdownSfx();
+            }
             countdownText.text = currentCountdown.ToString();
             PlayCountdownEffect();
-            AudioManager.Instance.PlayCountdownSfx();
         }
     }
 
