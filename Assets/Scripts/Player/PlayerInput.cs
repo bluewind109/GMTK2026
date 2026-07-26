@@ -61,38 +61,43 @@ public class PlayerInput : MonoBehaviour
         if (!isDirectionInputEnabled) return;
 
 
-        if (Input.GetKey(LOOK_LEFT) && Input.GetKey(LOOK_UP))
+        if (GetKeyInput(LOOK_LEFT) && GetKeyInput(LOOK_UP))
         {
             onDirectionPressed?.Invoke(eDirection.TopLeft);
         }
-        else if (Input.GetKey(LOOK_LEFT) && Input.GetKey(LOOK_DOWN))
+        else if (GetKeyInput(LOOK_LEFT) && GetKeyInput(LOOK_DOWN))
         {
             onDirectionPressed?.Invoke(eDirection.BottomLeft);
         }
-        else if (Input.GetKey(LOOK_RIGHT) && Input.GetKey(LOOK_UP))
+        else if (GetKeyInput(LOOK_RIGHT) && GetKeyInput(LOOK_UP))
         {
             onDirectionPressed?.Invoke(eDirection.TopRight);
         }
-        else if (Input.GetKey(LOOK_RIGHT) && Input.GetKey(LOOK_DOWN))
+        else if (GetKeyInput(LOOK_RIGHT) && GetKeyInput(LOOK_DOWN))
         {
             onDirectionPressed?.Invoke(eDirection.BottomRight);
         }
-        else if (Input.GetKey(LOOK_LEFT))
+        else if (GetKeyInput(LOOK_LEFT))
         {
             onDirectionPressed?.Invoke(eDirection.Left);
         }
-        else if (Input.GetKey(LOOK_RIGHT))
+        else if (GetKeyInput(LOOK_RIGHT))
         {
             onDirectionPressed?.Invoke(eDirection.Right);
         }
-        else if (Input.GetKey(LOOK_UP))
+        else if (GetKeyInput(LOOK_UP))
         {
             onDirectionPressed?.Invoke(eDirection.Up);
         }
-        else if (Input.GetKey(LOOK_DOWN))
+        else if (GetKeyInput(LOOK_DOWN))
         {
             onDirectionPressed?.Invoke(eDirection.Down);
         }
+    }
+
+    private bool GetKeyInput(KeyCode key)
+    {
+        return Input.GetKeyDown(key);
     }
 }
 

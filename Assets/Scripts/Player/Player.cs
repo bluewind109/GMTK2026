@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private AttackConfig attackConfig;
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform startLocation;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float globalAttackCooldown = 0.1f;
@@ -130,38 +131,79 @@ public class Player : MonoBehaviour
         return nearestEnemy;
     }
 
+    private const string LOOK_TOP_RIGHT = "_45";
+    private const string LOOK_BOTTOM_RIGHT = "_135";
+    private const string LOOK_BOTTOM_LEFT = "_225";
+    private const string LOOK_TOP_LEFT = "_315";
+    private eDirection lastDirection = eDirection.TopRight;
+    private string lastIdleAnimation = "idle" + LOOK_TOP_RIGHT;
     private void OnDirectionPressed(eDirection direction)
     {
+        string idlePrefix = "idle";
+        string animationName = idlePrefix + LOOK_TOP_RIGHT;
+
         switch (direction)
         {
             case eDirection.Left:
-                transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                if (lastIdleAnimation == idlePrefix + LOOK_TOP_RIGHT)
+                {
+                    animationName = idlePrefix + LOOK_TOP_LEFT;
+                }
+                else if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_RIGHT)
+                {
+                    animationName = idlePrefix + LOOK_BOTTOM_LEFT;
+                }
                 break;
             case eDirection.Right:
-                transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+                if (lastIdleAnimation == idlePrefix + LOOK_TOP_LEFT)
+                {
+                    animationName = idlePrefix + LOOK_TOP_RIGHT;
+                }
+                else if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_LEFT)
+                {
+                    animationName = idlePrefix + LOOK_BOTTOM_RIGHT;
+                }
                 break;
             case eDirection.Up:
-                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_LEFT)
+                {
+                    animationName = idlePrefix + LOOK_TOP_LEFT;
+                }
+                else if (lastIdleAnimation == idlePrefix + LOOK_BOTTOM_RIGHT)
+                {
+                    animationName = idlePrefix + LOOK_TOP_RIGHT;
+                }
                 break;
             case eDirection.Down:
-                transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                if (lastIdleAnimation == idlePrefix + LOOK_TOP_LEFT)
+                {
+                    animationName = idlePrefix + LOOK_BOTTOM_LEFT;
+                }
+                else if (lastIdleAnimation == idlePrefix + LOOK_TOP_RIGHT)
+                {
+                    animationName = idlePrefix + LOOK_BOTTOM_RIGHT;
+                }
                 break;
             case eDirection.TopLeft:
-                transform.rotation = Quaternion.Euler(0f, 0f, 45f);
+                animationName = idlePrefix + LOOK_TOP_LEFT;
                 break;
             case eDirection.TopRight:
-                transform.rotation = Quaternion.Euler(0f, 0f, -45f);
+                animationName = idlePrefix + LOOK_TOP_RIGHT;
                 break;
             case eDirection.BottomLeft:
-                transform.rotation = Quaternion.Euler(0f, 0f, 135f);
+                animationName = idlePrefix + LOOK_BOTTOM_LEFT;
                 break;
             case eDirection.BottomRight:
-                transform.rotation = Quaternion.Euler(0f, 0f, -135f);
+                animationName = idlePrefix + LOOK_BOTTOM_RIGHT;
                 break;
             default:
                 Debug.LogWarning($"Unhandled direction input: {direction}");
                 break;
         }
+        Debug.Log($"Player pressed direction: {direction}, lastDirection: {lastDirection}");
+        lastDirection = direction;
+        lastIdleAnimation = animationName;
+        animator.Play(animationName);
     }
 
     public void OnTurnStart()
