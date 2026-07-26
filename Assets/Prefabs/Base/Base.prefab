@@ -48,8 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Base
   spriteRenderer: {fileID: 6353315914248088291}
-  maxHealth: 20
+  maxHealth: 100
   healthBar: {fileID: 0}
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  damageFlashDuration: 0.08
 --- !u!1 &7667878074112886911
 GameObject:
   m_ObjectHideFlags: 0

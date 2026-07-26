@@ -15,21 +15,21 @@ MonoBehaviour:
   spawnInterval: 0.2
   numberOfTurns: 1
   leftSpawn:
-    spawnAmount: 15
+    spawnAmount: 5
     spawnWeights:
     - enemyType: 0
       weight: 80
     - enemyType: 1
       weight: 20
   centerSpawn:
-    spawnAmount: 15
+    spawnAmount: 5
     spawnWeights:
     - enemyType: 0
       weight: 80
     - enemyType: 1
       weight: 20
   rightSpawn:
-    spawnAmount: 15
+    spawnAmount: 5
     spawnWeights:
     - enemyType: 0
       weight: 80
