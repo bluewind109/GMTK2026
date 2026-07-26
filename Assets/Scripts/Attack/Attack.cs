@@ -31,9 +31,9 @@ public class Attack : MonoBehaviour
         this.damage = damage;
         // this.attackDuration = duration;
         hitbox.SetArea(size);
-        transform.localPosition = new Vector3(
-            transform.localPosition.x + attackOffset.x, 
-            transform.localPosition.y + attackOffset.y, 
+        hitbox.transform.localPosition = new Vector3(
+            hitbox.transform.localPosition.x + attackOffset.x, 
+            hitbox.transform.localPosition.y + attackOffset.y, 
             0f
         );
         _ = Execute();

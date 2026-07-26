@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -16,7 +15,7 @@ public class Player : MonoBehaviour
 
     private bool canAttack => globalAttackTimer.IsFinished();
 
-    private List<Enemy> enemiesInRange = new List<Enemy>();
+    private const string ENEMY_TAG = "Enemy";
 
     void Start()
     {
@@ -26,17 +25,12 @@ public class Player : MonoBehaviour
         playerInput.onAttackPressed += OnAttackPressed;
 
         attackRange = GetComponentInChildren<AttackRange>();
-        attackRange.onEnemyInRange += OnEnemyInRange;
-        attackRange.onEnemyOutOfRange += OnEnemyOutOfRange;
-
         attackRange.gameObject.SetActive(false);
     }
 
     void OnDestroy()
     {
         playerInput.onAttackPressed -= OnAttackPressed;
-        attackRange.onEnemyInRange -= OnEnemyInRange;
-        attackRange.onEnemyOutOfRange -= OnEnemyOutOfRange;
     }
 
     void Update()
@@ -53,7 +47,7 @@ public class Player : MonoBehaviour
         lastAttackType = attackType;
         AttackData attackData = attackConfig.GetAttackData(attackType);
 
-        Enemy nearestEnemy = FindNearestEnemy();
+        Enemy nearestEnemy = FindNearestEnemy(attackData.GetSnapRange());
         if (nearestEnemy != null)
         {
             attackRange.SetRange(attackData.GetSnapRange());
@@ -76,7 +70,10 @@ public class Player : MonoBehaviour
         if (contactPoint == null) return;
 
         Vector3 snapPosition = contactPoint.position;
+        Vector3 directionToEnemy = (nearestEnemy.transform.position - transform.position).normalized;
         transform.position = snapPosition;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, directionToEnemy);
+        Debug.Log($"Snapped to nearest enemy: {nearestEnemy.name} at position {snapPosition}");
     }
 
     private void ExecuteAttack(AttackData attackData)
@@ -95,6 +92,7 @@ public class Player : MonoBehaviour
         }
 
         Attack attack = Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
+        attack.transform.rotation = transform.rotation;
         attack.Initialize(
             attackData.GetHitboxSize(),
             attackData.GetDamage(),
@@ -103,19 +101,20 @@ public class Player : MonoBehaviour
         globalAttackTimer.Start(globalAttackCooldown);
     }
 
-    private Enemy FindNearestEnemy()
+    private Enemy FindNearestEnemy(float range)
     {
-        if (enemiesInRange.Count == 0)
-        {
-            Debug.Log("No enemies in range.");
-            return null;
-        }
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range);
 
         Enemy nearestEnemy = null;
         float nearestDistance = float.MaxValue;
 
-        foreach (var enemy in enemiesInRange)
+        foreach (var hit in hits)
         {
+            if (!hit.CompareTag(ENEMY_TAG)) continue;
+
+            Enemy enemy = hit.GetComponentInParent<Enemy>();
+            if (enemy == null) continue;
+
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
             if (distance < nearestDistance)
             {
@@ -126,18 +125,9 @@ public class Player : MonoBehaviour
 
         if (nearestEnemy != null)
             Debug.Log($"Nearest enemy found: {nearestEnemy.name} at distance {nearestDistance}");
+        else
+            Debug.Log("No enemies in range.");
+
         return nearestEnemy;
-    }
-
-    private void OnEnemyInRange(Enemy enemy)
-    {
-        if (!enemiesInRange.Contains(enemy))
-            enemiesInRange.Add(enemy);
-    }
-
-    private void OnEnemyOutOfRange(Enemy enemy)
-    {
-        if (enemiesInRange.Contains(enemy))
-            enemiesInRange.Remove(enemy);
     }
 }

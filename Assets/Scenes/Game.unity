@@ -405,6 +405,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d9b04fe1965f048a83608967a28def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnController
+--- !u!114 &562204079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7669815085954892401, guid: 02544db0d6d271f4f9abd5c34ae33b35, type: 3}
+  m_PrefabInstance: {fileID: 1146930404774452096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9cb59f9d3faa24f978474c2f0664fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9046836955475512417, guid: 24ef87b628860244ba8f6ca8c0c2c7f1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 562204079}
     - target: {fileID: 9046836955475512417, guid: 24ef87b628860244ba8f6ca8c0c2c7f1, type: 3}
       propertyPath: enemyManager
       value: 
