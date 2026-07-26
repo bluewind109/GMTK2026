@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: LevelInfo-2
   m_EditorClassIdentifier: Assembly-CSharp::LevelInfo
   spawnInterval: 0.2
-  numberOfTurns: 1
+  numberOfTurns: 2
   leftSpawn:
-    spawnAmount: 20
+    spawnAmount: 15
     spawnWeights:
     - enemyType: 0
       weight: 80
     - enemyType: 1
       weight: 20
   centerSpawn:
-    spawnAmount: 20
+    spawnAmount: 15
     spawnWeights:
     - enemyType: 0
       weight: 80
     - enemyType: 1
       weight: 20
   rightSpawn:
-    spawnAmount: 20
+    spawnAmount: 15
     spawnWeights:
     - enemyType: 0
       weight: 80
