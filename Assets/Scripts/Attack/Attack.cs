@@ -12,12 +12,12 @@ public class Attack : MonoBehaviour
     void Awake()
     {
         hitbox = GetComponentInChildren<Hitbox>();
-        hitbox.onHit += OnHit;
+        // hitbox.onHit += OnHit;
     }
 
     void OnDestroy()
     {
-        hitbox.onHit -= OnHit;
+        // hitbox.onHit -= OnHit;
     }
 
     void Start()
@@ -43,6 +43,18 @@ public class Attack : MonoBehaviour
     {
         await UniTask.Yield();
         hitbox.gameObject.SetActive(true);
+        Collider2D[] hits = Physics2D.OverlapBoxAll(hitbox.transform.position, hitbox.transform.localScale, 0f);
+        foreach (var hit in hits)
+        {
+            if (!hit.CompareTag(TAG)) continue;
+
+            var hurtbox = hit.GetComponentInParent<Hurtbox>();
+            if (hurtbox != null)
+            {
+                OnHit(hurtbox);
+            }
+        }
+
         await UniTask.WaitForSeconds(attackDuration);
         DeactivateHitbox();
     }
@@ -54,6 +66,7 @@ public class Attack : MonoBehaviour
 
     private void OnHit(Hurtbox hurtbox)
     {
+        Debug.Log($"Hitbox hit: {hurtbox.name}, dealing {damage} damage.");
         hurtbox.TakeDamage(damage);
     }
 }

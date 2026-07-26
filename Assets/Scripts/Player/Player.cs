@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     {
         if (!canAttack) return;
 
-        Debug.Log($"Player pressed attack: {attackType}");
+        // Debug.Log($"Player pressed attack: {attackType}");
         lastAttackType = attackType;
         AttackData attackData = attackConfig.GetAttackData(attackType);
 
@@ -74,7 +74,6 @@ public class Player : MonoBehaviour
         Vector3 directionToEnemy = (nearestEnemy.transform.position - transform.position).normalized;
         transform.position = snapPosition;
         transform.rotation = Quaternion.LookRotation(Vector3.forward, directionToEnemy);
-        Debug.Log($"Snapped to nearest enemy: {nearestEnemy.name} at position {snapPosition}");
     }
 
     private void ExecuteAttack(AttackData attackData)
@@ -123,11 +122,6 @@ public class Player : MonoBehaviour
                 nearestEnemy = enemy;
             }
         }
-
-        if (nearestEnemy != null)
-            Debug.Log($"Nearest enemy found: {nearestEnemy.name} at distance {nearestDistance}");
-        else
-            Debug.Log("No enemies in range.");
 
         return nearestEnemy;
     }
