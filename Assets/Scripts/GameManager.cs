@@ -64,8 +64,6 @@ public class GameManager : MonoBehaviour
 
 		currentPhase = GamePhase.Start;
 		PlayIntro().Forget();
-
-
 	}
 
 	public async UniTask PlayIntro()
