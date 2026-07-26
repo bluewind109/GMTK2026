@@ -61,4 +61,6 @@ public class Turn
             End();
         }
     }
+
+    public float Duration => duration;
 }

@@ -1,4 +1,6 @@
 using System;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class TurnController : MonoBehaviour
@@ -11,6 +13,7 @@ public class TurnController : MonoBehaviour
     [SerializeField] private TurnSO config;
     [SerializeField] private float playerDuration = 5f;
     [SerializeField] private TurnTimerUI timerUI;
+    [SerializeField] private TextMeshProUGUI countdownText;
 
     private Turn enemyTurn;
     private Turn playerTurn;
@@ -84,6 +87,7 @@ public class TurnController : MonoBehaviour
         if (currentTurn == null) return;
 
         currentTurn.UpdateDuration();
+        UpdateCountdownText();
         if (currentTurn == playerTurn)
         {
             timerUI.UpdatePlayerTurnFill(currentTurn.TimePercent);
@@ -92,6 +96,27 @@ public class TurnController : MonoBehaviour
         {
             timerUI.UpdateEnemyTurnFill(currentTurn.TimePercent);
         }
+    }
+
+    private int currentCountdown = -1;
+    private void UpdateCountdownText()
+    {
+        if (currentTurn == null) return;
+
+        int secondsRemaining = Mathf.CeilToInt(currentTurn.TimePercent * currentTurn.Duration);
+        if (secondsRemaining != currentCountdown)
+        {
+            currentCountdown = secondsRemaining;
+            countdownText.text = currentCountdown.ToString();
+            PlayCountdownEffect();
+            AudioManager.Instance.PlayCountdownSfx();
+        }
+    }
+
+    private void PlayCountdownEffect()
+    {
+        countdownText.transform.DOKill();
+        Tween countdownTween = countdownText.transform.DOPunchScale(Vector3.one * 1.5f, 0.3f, 1, 0.5f);
     }
 
     private void OnPlayerTurnEnd()

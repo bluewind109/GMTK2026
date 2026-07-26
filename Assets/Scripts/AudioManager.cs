@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
+
     [Header("Audio Sources")]
     [SerializeField] private AudioSource musicAS;
     [SerializeField] private AudioSource audioSourcePrefab;
@@ -10,10 +12,29 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clips")]
     [SerializeField] private AudioClip playerAttackClip;
     [SerializeField] private AudioClip enemyAttackClip;
+    [SerializeField] private AudioClip countdownClip;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
 
     private const int MAX_AUDIO_SOURCES = 15;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 
     void Start()
     {
@@ -47,4 +68,5 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPlayerAttackSfx() => PlaySfx(playerAttackClip);
     public void PlayEnemyAttackSfx() => PlaySfx(enemyAttackClip);
+    public void PlayCountdownSfx() => PlaySfx(countdownClip);
 }
