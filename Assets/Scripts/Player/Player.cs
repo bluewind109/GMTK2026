@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
     private eDirection lastDirection = eDirection.Up;
     private string idlePrefix = "idle_";
     private string lastIdleAnimation;
-    private int lastAngle = 45;
+    private int lastAngle = 0;
     private void OnDirectionPressed(eDirection direction)
     {
         if (string.IsNullOrEmpty(lastIdleAnimation))
