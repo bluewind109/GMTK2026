@@ -1,0 +1,17 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>320</x><y>370</y><w>200</w><h>130</h></coordinates><panel_attributes>/Class/
+*GameManager*
+--
+-State currentState
+-Turn currentTurn
+--
++void SetState(State nextState)
+-void OnTurnBegin()
+-void OnturnEnd()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>400</y><w>110</w><h>50</h></coordinates><panel_attributes>/Class/
+*Turn*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>430</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>170</x><y>540</y><w>110</w><h>50</h></coordinates><panel_attributes>/Class/
+*Base*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>490</y><w>100</w><h>100</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;80;80;80;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>530</y><w>200</w><h>140</h></coordinates><panel_attributes>/AbstractClass/
+*State*
+--
+#GameManager gameManager
+--
++abstract void Begin()
++abstract void End()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>490</y><w>160</w><h>80</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>140;60;10;60;10;10</additional_attributes></element></diagram>
